@@ -2,7 +2,7 @@
 lock "~> 3.14.0"
 
 # Change these
-server 'otfusion.org', port: 3000, roles: [:web, :app, :db], primary: true
+server 'otfusion.org', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:jmsalcido/batosjugando-tools.git'
 set :application,     'batosjugando'
@@ -36,6 +36,7 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 ## Linked Files & Directories (Default None):
 # set :linked_files, %w{config/database.yml}
 # set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :repo_tree, "backend-rails"
 
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
