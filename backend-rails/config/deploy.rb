@@ -38,6 +38,21 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 # set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 set :repo_tree, "backend-rails"
 
+# Sidekiq
+set :sidekiq_roles, :app
+set :sidekiq_default_hooks, true
+set :sidekiq_pid, File.join(shared_path, 'tmp', 'pids', 'sidekiq.pid') # ensure this path exists in production before deploying.
+set :sidekiq_env, fetch(:rack_env, fetch(:rails_env, fetch(:stage)))
+set :sidekiq_log, File.join(shared_path, 'log', 'sidekiq.log')
+
+# sidekiq systemd options
+set :sidekiq_service_unit_name, 'sidekiq'
+set :sidekiq_service_unit_user, :user # :system
+set :sidekiq_enable_lingering, true
+set :sidekiq_lingering_user, nil
+
+set :sidekiq_user, 'rails' #user to run sidekiq as
+
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
   task :make_dirs do

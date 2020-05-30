@@ -11,5 +11,10 @@ install_plugin Capistrano::Puma
 require "capistrano/scm/git"
 install_plugin Capistrano::SCM::Git
 
+require 'capistrano/sidekiq'
+install_plugin Capistrano::Sidekiq  # Default sidekiq tasks
+# Then select your service manager
+install_plugin Capistrano::Sidekiq::Systemd
+
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
 Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
