@@ -46,8 +46,8 @@ set :sidekiq_roles, :app
 set :sidekiq_env, 'production'
 set :sidekiq_config, "#{current_path}/config/sidekiq.yml"
 # set :sidekiq_default_hooks, true
-# set :sidekiq_pid, File.join(shared_path, 'tmp', 'pids', 'sidekiq.pid') # ensure this path exists in production before deploying.
-# set :sidekiq_log, File.join(shared_path, 'log', 'sidekiq.log')
+set :sidekiq_pid, File.join(shared_path, 'tmp', 'pids', 'sidekiq.pid') # ensure this path exists in production before deploying.
+set :sidekiq_log, File.join(release_path, 'log', 'sidekiq.log')
 #
 # set :sidekiq_user, 'rails' #user to run sidekiq as
 set :pty,  false
@@ -107,6 +107,20 @@ namespace :deploy do
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
   after  :finishing,    :restart
+end
+
+namespace :sidekiq do
+  namespace :check do
+    before :start, :check_log_file do
+      on roles(:app), in: :sequence, wait: 10 do
+        log_file = fetch(:sidekiq_log)
+        unless test("[ -f #{log_file}")
+          puts "Log file #{log_file} does not exists, creating..."
+          execute("touch #{log_file}")
+        end
+      end
+    end
+  end
 end
 
 # ps aux | grep puma    # Get puma pid
