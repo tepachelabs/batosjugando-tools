@@ -26,6 +26,9 @@ set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
 
+# rbenv
+set :rbenv_map_bins, %w(rake gem bundle ruby rails sidekiq sidekiqctl)
+
 ## Defaults:
 # set :scm,           :git
 # set :branch,        :master
@@ -39,14 +42,15 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 set :repo_tree, "backend-rails"
 
 # Capistrano/Sidekiq (not working RN)
-# set :sidekiq_roles, :app
+set :sidekiq_roles, :app
+set :sidekiq_env, 'production'
+set :sidekiq_config, "#{current_path}/config/sidekiq.yml"
 # set :sidekiq_default_hooks, true
 # set :sidekiq_pid, File.join(shared_path, 'tmp', 'pids', 'sidekiq.pid') # ensure this path exists in production before deploying.
-# set :sidekiq_env, fetch(:rack_env, fetch(:rails_env, fetch(:stage)))
 # set :sidekiq_log, File.join(shared_path, 'log', 'sidekiq.log')
 #
 # set :sidekiq_user, 'rails' #user to run sidekiq as
-# set :pty,  false
+set :pty,  false
 
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
@@ -108,3 +112,5 @@ end
 # ps aux | grep puma    # Get puma pid
 # kill -s SIGUSR2 pid   # Restart puma
 # kill -s SIGTERM pid   # Stop puma
+SSHKit.config.command_map[:sidekiq] = "bundle exec sidekiq"
+SSHKit.config.command_map[:sidekiqctl] = "bundle exec sidekiqctl"

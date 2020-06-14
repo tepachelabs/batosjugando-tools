@@ -11,9 +11,6 @@ gem 'cancancan'
 gem 'draper'
 gem 'pundit'
 
-# Sidekiq
-gem 'sidekiq'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 
@@ -48,6 +45,10 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+# Jobs
+# Sidekiq
+gem 'sidekiq', '~> 5.2', '>= 5.2.7'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -67,7 +68,7 @@ group :development do
   gem 'capistrano-rails',   require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano3-puma',   require: false
-  # gem 'capistrano-sidekiq'
+  gem 'capistrano-sidekiq'
 end
 
 group :test do

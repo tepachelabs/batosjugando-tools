@@ -86,6 +86,9 @@ GEM
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
+    capistrano-sidekiq (1.0.2)
+      capistrano (>= 3.9.0)
+      sidekiq (>= 3.4)
     capistrano3-puma (3.1.1)
       capistrano (~> 3.7)
       capistrano-bundler
@@ -104,7 +107,7 @@ GEM
       nokogiri (~> 1.8)
     coderay (1.1.2)
     concurrent-ruby (1.1.6)
-    connection_pool (2.2.2)
+    connection_pool (2.2.3)
     crass (1.0.6)
     devise (4.7.1)
       bcrypt (~> 3.0)
@@ -195,7 +198,7 @@ GEM
     puma (3.12.4)
     pundit (2.1.0)
       activesupport (>= 3.0.0)
-    rack (2.2.2)
+    rack (2.0.9)
     rack-protection (2.0.8.1)
       rack
     rack-test (1.1.0)
@@ -233,7 +236,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    redis (4.1.4)
+    redis (4.2.1)
     ref (2.0.0)
     regexp_parser (1.7.0)
     request_store (1.5.0)
@@ -267,11 +270,11 @@ GEM
       rubyzip (>= 1.2.2)
     sentry-raven (3.0.0)
       faraday (>= 1.0)
-    sidekiq (6.0.7)
-      connection_pool (>= 2.2.2)
-      rack (~> 2.0)
-      rack-protection (>= 2.0.0)
-      redis (>= 4.1.0)
+    sidekiq (5.2.8)
+      connection_pool (~> 2.2, >= 2.2.2)
+      rack (< 2.1.0)
+      rack-protection (>= 1.5.0)
+      redis (>= 3.3.5, < 5)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -324,6 +327,7 @@ DEPENDENCIES
   capistrano-bundler
   capistrano-rails
   capistrano-rvm
+  capistrano-sidekiq
   capistrano3-puma
   capybara (>= 2.15)
   chromedriver-helper
@@ -339,7 +343,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   selenium-webdriver
   sentry-raven
-  sidekiq
+  sidekiq (~> 5.2, >= 5.2.7)
   spring
   spring-watcher-listen (~> 2.0.0)
   therubyracer
