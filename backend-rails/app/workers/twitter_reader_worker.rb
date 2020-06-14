@@ -4,11 +4,11 @@ class TwitterReaderWorker
 
   def perform
     unless BatosJugando.twitter?
-      puts 'Twitter is not set-up.'
+      puts 'Twitter is not set-up, woops!'
       return
     end
 
-    puts "Hello, this is the worker for batos jugando, should run in sidekiq only."
+    TwitterReaderService.new.call
   end
 
 end
