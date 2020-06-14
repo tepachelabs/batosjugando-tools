@@ -15,10 +15,5 @@ module BackendRails
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
-
-    Raven.configure do |config|
-      config.dsn = 'https://961fa60c6c234074aa2d8c5dcac76f8e:7c1a2ae79af3484587ae6596b04f92d3@o400222.ingest.sentry.io/5258436'
-    end
-
   end
 end

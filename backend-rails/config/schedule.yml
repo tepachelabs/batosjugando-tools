@@ -1,0 +1,4 @@
+# config/schedule.yml
+batos_jugando_tweets:
+  cron: "*/30 * * * *" # run each 30 minutes
+  class: "TwitterReaderWorker"
