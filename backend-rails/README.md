@@ -1,24 +1,46 @@
-# README
+# Batos Jugando Webapp Tools
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Some tools to make life easier to all on Batos Jugando, this is the web app that handles everything
 
-Things you may want to cover:
+## Currently doing:
+- Automate `El Hongo Verde` publish process
+- Twitter reader to check the `BatosJugando` account and post `#discord` tweets to the Discord Server
+- Discord Bot for... stuff?
+- ?? 
+- PROFIT!
 
-* Ruby version
+## Development
 
-* System dependencies
+* Ruby version: `2.6.5`
 
-* Configuration
+* System dependencies (See `Gemfile`)
 
-* Database creation
+## Configuration
 
-* Database initialization
+See the `env.example` file to fill the environment variables, also the secrets file is working with production
+ credentials just in case... ask for the private key to change those.
 
-* How to run the test suite
+### Database creation
+Just install Postgresql latest version.
 
-* Services (job queues, cache servers, search engines, etc.)
+### Database initialization
+As simple as `bundle install rails db:create`
 
-* Deployment instructions
+### How to run the test suite
+`RSpec`
 
-* ...
+### Services (job queues, cache servers, search engines, etc.)
+run `Sidekiq` and that's it.
+
+### Deployment instructions
+Capistrano makes everything, it sends everything to `digital ocean` to the `otfusion` server,
+ you just require SSH access.
+
+
+## 3rd party stuff
+
+### Reddit
+I created a dev app for Reddit but you can use your own, go to: https://www.reddit.com/prefs/apps
+
+The redirect site for the test (added on credentials) is `http://localhost:3000/reddit/redirect`
+

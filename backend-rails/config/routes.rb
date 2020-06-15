@@ -9,4 +9,10 @@ Rails.application.routes.draw do
   authenticate :admin_user, lambda { |u| u.present? } do
     mount Sidekiq::Web => '/admin/sidekiq'
   end
+
+  namespace :reddit do
+    get '/login', to: 'login#login'
+    get '/redirect', to: 'login#redirect'
+  end
+
 end
