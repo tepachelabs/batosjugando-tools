@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_14_045725) do
+ActiveRecord::Schema.define(version: 2020_06_15_043807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,4 +49,14 @@ ActiveRecord::Schema.define(version: 2020_06_14_045725) do
     t.index ["username"], name: "index_read_tweets_on_username", unique: true
   end
 
+  create_table "reddit_tokens", force: :cascade do |t|
+    t.string "auth_token", default: ""
+    t.string "refresh_token", default: ""
+    t.bigint "admin_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_user_id"], name: "index_reddit_tokens_on_admin_user_id"
+  end
+
+  add_foreign_key "reddit_tokens", "admin_users"
 end
