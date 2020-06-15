@@ -1,5 +1,4 @@
 class Reddit::LoginController < ApplicationController
-
   def login
     redirect_to oauth_service.login_url
   end
@@ -17,5 +16,4 @@ class Reddit::LoginController < ApplicationController
   def oauth_service
     @oauth_service = Reddit::OAuthService.new
   end
-
 end

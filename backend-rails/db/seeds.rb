@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 if Rails.env.development?
-  puts "Adding Developments Seeds..."
+  puts 'Adding Developments Seeds...'
 
   # Users
   AdminUser.create!(email: 'admin@otfusion.org', password: 'password', password_confirmation: 'password')

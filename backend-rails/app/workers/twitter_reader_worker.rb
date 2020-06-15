@@ -10,5 +10,4 @@ class TwitterReaderWorker
 
     TwitterReaderService.new.call
   end
-
 end

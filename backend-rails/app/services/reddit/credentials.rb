@@ -1,5 +1,5 @@
 module Reddit::Credentials
-    def reddit_client_id
+  def reddit_client_id
     Rails.application.credentials.reddit[:app_id]
   end
 

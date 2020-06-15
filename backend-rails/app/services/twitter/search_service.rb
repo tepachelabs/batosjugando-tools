@@ -18,7 +18,6 @@ class Twitter::SearchService
   private
 
   def query
-    "(#discord) (from:batosjugando)"
+    '(#discord) (from:batosjugando)'
   end
-
 end

@@ -1,8 +1,8 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.14.0"
+lock '~> 3.14.0'
 
 # Change these
-server 'otfusion.org', port: 22, roles: [:web, :app, :db], primary: true
+server 'otfusion.org', port: 22, roles: %i[web app db], primary: true
 
 set :repo_url,        'git@github.com:jmsalcido/batosjugando-tools.git'
 set :application,     'batosjugando'
@@ -21,13 +21,13 @@ set :puma_state,      "#{shared_path}/tmp/pids/puma.state"
 set :puma_pid,        "#{shared_path}/tmp/pids/puma.pid"
 set :puma_access_log, "#{release_path}/log/puma.error.log"
 set :puma_error_log,  "#{release_path}/log/puma.access.log"
-set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub) }
+set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w[~/.ssh/id_rsa.pub] }
 set :puma_preload_app, true
 set :puma_worker_timeout, nil
-set :puma_init_active_record, true  # Change to false when not using ActiveRecord
+set :puma_init_active_record, true # Change to false when not using ActiveRecord
 
 # rbenv
-set :rbenv_map_bins, %w(rake gem bundle ruby rails sidekiq sidekiqctl)
+set :rbenv_map_bins, %w[rake gem bundle ruby rails sidekiq sidekiqctl]
 
 ## Defaults:
 # set :scm,           :git
@@ -39,7 +39,7 @@ set :rbenv_map_bins, %w(rake gem bundle ruby rails sidekiq sidekiqctl)
 ## Linked Files & Directories (Default None):
 # set :linked_files, %w{config/database.yml}
 # set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
-set :repo_tree, "backend-rails"
+set :repo_tree, 'backend-rails'
 
 # Capistrano/Sidekiq (not working RN)
 set :sidekiq_roles, :app
@@ -50,7 +50,7 @@ set :sidekiq_pid, File.join(shared_path, 'tmp', 'pids', 'sidekiq.pid') # ensure 
 set :sidekiq_log, File.join(release_path, 'log', 'sidekiq.log')
 #
 # set :sidekiq_user, 'rails' #user to run sidekiq as
-set :pty,  false
+set :pty, false
 
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
@@ -64,7 +64,7 @@ namespace :puma do
   before :start, :make_dirs
 end
 
-append :linked_files, "config/master.key"
+append :linked_files, 'config/master.key'
 
 namespace :deploy do
   namespace :check do
@@ -77,12 +77,12 @@ namespace :deploy do
     end
   end
 
-  desc "Make sure local git is in sync with remote."
+  desc 'Make sure local git is in sync with remote.'
   task :check_revision do
     on roles(:app) do
       unless `git rev-parse HEAD` == `git rev-parse origin/master`
-        puts "WARNING: HEAD is not the same as origin/master"
-        puts "Run `git push` to sync changes."
+        puts 'WARNING: HEAD is not the same as origin/master'
+        puts 'Run `git push` to sync changes.'
         exit
       end
     end
@@ -126,5 +126,5 @@ end
 # ps aux | grep puma    # Get puma pid
 # kill -s SIGUSR2 pid   # Restart puma
 # kill -s SIGTERM pid   # Stop puma
-SSHKit.config.command_map[:sidekiq] = "bundle exec sidekiq"
-SSHKit.config.command_map[:sidekiqctl] = "bundle exec sidekiqctl"
+SSHKit.config.command_map[:sidekiq] = 'bundle exec sidekiq'
+SSHKit.config.command_map[:sidekiqctl] = 'bundle exec sidekiqctl'

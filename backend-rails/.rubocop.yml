@@ -1,0 +1,18 @@
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Metrics/AbcSize:
+  Exclude:
+    - app/services/twitter/generate_client.rb
+Metrics/BlockLength:
+  Exclude:
+    - db/schema.rb
+    - config/deploy.rb
+    - spec/**/*
+Layout/LineLength:
+  Exclude:
+    - config/deploy.rb
+    - config/initializers/devise.rb

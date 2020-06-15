@@ -7,7 +7,7 @@ describe Twitter::GenerateClient do
 
     context 'twitter credentials are present' do
       it 'creates the twitter client' do
-        expect(Twitter::REST::Client).to receive(:new).and_return(double("twitter"))
+        expect(Twitter::REST::Client).to receive(:new).and_return(double('twitter'))
         described_class.call
       end
     end

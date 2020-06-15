@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   require 'sidekiq/web'
 
-  authenticate :admin_user, lambda { |u| u.present? } do
+  authenticate :admin_user, ->(u) { u.present? } do
     mount Sidekiq::Web => '/admin/sidekiq'
   end
 
@@ -14,5 +14,4 @@ Rails.application.routes.draw do
     get '/login', to: 'login#login'
     get '/redirect', to: 'login#redirect'
   end
-
 end
