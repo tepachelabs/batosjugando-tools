@@ -1,3 +1,6 @@
+Style/StringLiterals:
+  Exclude:
+    - db/schema.rb
 Style/FrozenStringLiteralComment:
   Enabled: false
 Style/Documentation:

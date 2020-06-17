@@ -48,6 +48,9 @@ gem 'twitter'
 # Http requests
 gem 'httparty'
 
+# RSS -> using my branch since... there is a bug that does not let me parse the RSS directly from AnchorFM
+gem 'rss', git: 'git@github.com:jmsalcido/rss.git', branch: 'js/itunes-duration-integer'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

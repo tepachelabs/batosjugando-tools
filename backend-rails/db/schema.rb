@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_200_615_043_807) do
+ActiveRecord::Schema.define(version: 20_200_617_184_559) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -40,12 +40,26 @@ ActiveRecord::Schema.define(version: 20_200_615_043_807) do
     t.index ['reset_password_token'], name: 'index_admin_users_on_reset_password_token', unique: true
   end
 
-  create_table 'read_tweets', force: :cascade do |t|
-    t.string 'username'
+  create_table 'last_published', force: :cascade do |t|
+    t.string 'twitter_username'
     t.string 'last_tweet_id'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.index ['username'], name: 'index_read_tweets_on_username', unique: true
+    t.string 'name'
+    t.string 'podcast_episode_url'
+    t.index ['podcast_episode_url'], name: 'index_last_published_on_podcast_episode_url', unique: true
+    t.index ['twitter_username'], name: 'index_last_published_on_twitter_username', unique: true
+  end
+
+  create_table 'podcast_episodes', force: :cascade do |t|
+    t.string 'title'
+    t.text 'description'
+    t.string 'url'
+    t.integer 'season'
+    t.integer 'episode'
+    t.boolean 'published', default: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
   create_table 'reddit_tokens', force: :cascade do |t|

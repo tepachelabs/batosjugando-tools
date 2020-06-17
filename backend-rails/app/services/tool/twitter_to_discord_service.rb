@@ -1,11 +1,11 @@
 class Tool::TwitterToDiscordService
-  def call(batos_jugando_reads, tweets = [])
+  def call(last_published, tweets = [])
     tweets.each do |tweet|
       send_tweet_to_discord(tweet)
-      batos_jugando_reads.last_tweet_id = tweet.tweet_id
+      last_published.last_tweet_id = tweet.tweet_id
     end
 
-    batos_jugando_reads.save
+    last_published.save
   end
 
   private

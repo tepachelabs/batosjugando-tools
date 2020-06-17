@@ -1,5 +1,5 @@
 describe Twitter::SearchService do
-  fixtures :read_tweet
+  fixtures :last_published
   let(:twitter_client) { double('twitter_client') }
   describe '#call' do
     subject do
@@ -16,7 +16,7 @@ describe Twitter::SearchService do
     end
 
     it 'returns the tweets correctly' do
-      result = subject.call(ReadTweet.find_by(username: 'batosjugando'))
+      result = subject.call(LastPublished.find_by(twitter_username: 'batosjugando'))
       expect(result.count).to be 3
       expect(result[0].text).to eql 'sample text for 3'
       expect(result[0].tweet_url).to eql 'https://localhost/3'

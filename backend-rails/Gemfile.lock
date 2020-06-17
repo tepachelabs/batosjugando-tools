@@ -1,3 +1,11 @@
+GIT
+  remote: git@github.com:jmsalcido/rss.git
+  revision: 2254bab085e3b0900a6bfe457ba834e745ea6a2c
+  branch: js/itunes-duration-integer
+  specs:
+    rss (0.3.0)
+      rexml
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -246,7 +254,7 @@ GEM
     pundit (2.1.0)
       activesupport (>= 3.0.0)
     raabro (1.3.1)
-    rack (2.0.9)
+    rack (2.2.3)
     rack-protection (2.0.8.1)
       rack
     rack-test (1.1.0)
@@ -285,7 +293,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    redis (4.2.1)
+    redis (4.1.4)
     ref (2.0.0)
     regexp_parser (1.7.1)
     request_store (1.5.0)
@@ -349,11 +357,11 @@ GEM
       rubyzip (>= 1.2.2)
     sentry-raven (3.0.0)
       faraday (>= 1.0)
-    sidekiq (5.2.8)
+    sidekiq (5.2.9)
       connection_pool (~> 2.2, >= 2.2.2)
-      rack (< 2.1.0)
+      rack (~> 2.0)
       rack-protection (>= 1.5.0)
-      redis (>= 3.3.5, < 5)
+      redis (>= 3.3.5, < 4.2)
     sidekiq-cron (1.2.0)
       fugit (~> 1.1)
       sidekiq (>= 4.2.1)
@@ -443,6 +451,7 @@ DEPENDENCIES
   pundit
   rails (~> 5.2.3)
   rspec-rails (~> 4.0.0)
+  rss!
   rubocop
   sass-rails (~> 5.0)
   selenium-webdriver

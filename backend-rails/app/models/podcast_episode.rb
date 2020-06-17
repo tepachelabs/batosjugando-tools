@@ -1,0 +1,2 @@
+class PodcastEpisode < ApplicationRecord
+end
