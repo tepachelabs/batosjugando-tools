@@ -15,6 +15,6 @@ if Rails.env.development?
   # Reddit
   RedditToken.create!(admin_user_id: admin.id)
 
-  # Twitter
-  ReadTweet.create!(username: 'batosjugando')
+  # LastPublished
+  LastPublished.create!(twitter_username: 'batosjugando')
 end

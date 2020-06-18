@@ -10,12 +10,16 @@ Style/ClassAndModuleChildren:
 Metrics/AbcSize:
   Exclude:
     - app/services/twitter/generate_client.rb
+Metrics/MethodLength:
+  Enabled: false
 Metrics/BlockLength:
   Exclude:
+    - Gemfile
     - db/schema.rb
     - config/deploy.rb
     - spec/**/*
 Layout/LineLength:
   Exclude:
+    - Gemfile
     - config/deploy.rb
     - config/initializers/devise.rb

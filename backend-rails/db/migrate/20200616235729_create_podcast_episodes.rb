@@ -4,6 +4,7 @@ class CreatePodcastEpisodes < ActiveRecord::Migration[5.2]
       t.string :title
       t.text :description
       t.string :url
+      t.string :audio_url
       t.integer :season
       t.integer :episode
       t.boolean :published, default: false

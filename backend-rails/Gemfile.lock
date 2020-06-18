@@ -1,11 +1,3 @@
-GIT
-  remote: git@github.com:jmsalcido/rss.git
-  revision: 2254bab085e3b0900a6bfe457ba834e745ea6a2c
-  branch: js/itunes-duration-integer
-  specs:
-    rss (0.3.0)
-      rexml
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -147,6 +139,9 @@ GEM
       activesupport (>= 4.2.0)
     faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
+    feedjira (3.1.1)
+      loofah (>= 2.3.1)
+      sax-machine (>= 1.0)
     ffi (1.13.1)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
@@ -207,7 +202,7 @@ GEM
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
-    loofah (2.5.0)
+    loofah (2.6.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -235,7 +230,7 @@ GEM
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
-    parallel (1.19.1)
+    parallel (1.19.2)
     parser (2.7.1.3)
       ast (~> 2.4.0)
     pg (1.2.3)
@@ -352,6 +347,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    sax-machine (1.3.2)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -441,6 +437,7 @@ DEPENDENCIES
   dotenv-rails
   draper
   factory_bot
+  feedjira
   httparty
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
@@ -451,8 +448,8 @@ DEPENDENCIES
   pundit
   rails (~> 5.2.3)
   rspec-rails (~> 4.0.0)
-  rss!
   rubocop
+  ruby-progressbar
   sass-rails (~> 5.0)
   selenium-webdriver
   sentry-raven
