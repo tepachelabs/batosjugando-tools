@@ -9,12 +9,12 @@ class Reddit::OAuthService
     reddit_login_url
   end
 
-  def get_authorization_token(admin_user, _state, code)
-    @authorization_token.call(admin_user, code)
+  def get_authorization_token(admin_user, code)
+    @authorization_token.get_token(admin_user, code)
   end
 
-  def refresh_authorization_token(_admin_user)
-    raise 'NotFinished'
+  def refresh_authorization_token(reddit_token)
+    @authorization_token.refresh_token(reddit_token)
   end
 
   private
@@ -30,6 +30,6 @@ class Reddit::OAuthService
   end
 
   def reddit_api_scope
-    'identity edit submit save vote'
+    'identity edit submit save vote flair'
   end
 end

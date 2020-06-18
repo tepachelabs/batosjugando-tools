@@ -1,6 +1,7 @@
 class PodcastEpisodePublisherService
-  def initialize(episode_reader = nil)
+  def initialize(episode_reader = nil, reddit_publish_service = nil)
     @episode_reader = episode_reader || Anchor::RSSReaderService.new.call
+    @reddit_publish_service = reddit_publish_service || Reddit::PublishService.new
   end
 
   def call
@@ -10,13 +11,15 @@ class PodcastEpisodePublisherService
 
     save_all episodes
 
-    return unless episodes.count > 1
-
     puts 'Notification: more than 1 episode to publish, will publish last one.'
-    publish(saved.first)
+    publish(AdminUser.first, saved.first)
   end
 
   private
+
+  def publish(admin_user, episode)
+    @reddit_publish_service.call(admin_user.reddit_token, episode)
+  end
 
   def save_all(episodes)
     saved = []
@@ -33,9 +36,5 @@ class PodcastEpisodePublisherService
 
     # do something if it fails lel!
     saved
-  end
-
-  def publish(_episode)
-    puts 'publish lel!'
   end
 end
