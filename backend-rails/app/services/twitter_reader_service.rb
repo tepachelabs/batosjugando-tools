@@ -5,8 +5,8 @@ class TwitterReaderService
   end
 
   def call
-    batos_jugando_reads = ReadTweet.find_by(username: 'batosjugando')
-    tweets = @search_service.call(batos_jugando_reads)
-    @twitter_to_discord.call(batos_jugando_reads, tweets)
+    last_published = LastPublished.find_by(twitter_username: 'batosjugando')
+    tweets = @search_service.call(last_published)
+    @twitter_to_discord.call(last_published, tweets)
   end
 end

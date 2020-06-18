@@ -48,6 +48,12 @@ gem 'twitter'
 # Http requests
 gem 'httparty'
 
+# RSS -> using my branch since... there is a bug that does not let me parse the RSS directly from AnchorFM
+# gem 'rss', git: 'git@github.com:jmsalcido/rss.git', branch: 'js/itunes-duration-integer' # => Not working on 2.6.0 build
+# Using Simple RSS
+# gem 'simple-rss' # -> not reading Itunes values
+gem 'feedjira' # combo with httparty. see docs.
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
@@ -55,6 +61,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Sidekiq
 gem 'sidekiq', '~> 5.2', '>= 5.2.7'
 gem 'sidekiq-cron'
+
+# Ruby progressbar master race.
+gem 'ruby-progressbar'
 
 # Testing and Debugging in general
 group :test, :development do

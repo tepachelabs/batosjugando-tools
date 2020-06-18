@@ -3,8 +3,8 @@ class Twitter::SearchService
     @client = client || Twitter::GenerateClient.call
   end
 
-  def call(batos_jugando_reads = nil)
-    tweets = @client.search(query, since_id: batos_jugando_reads&.last_tweet_id.to_i)
+  def call(last_published = nil)
+    tweets = @client.search(query, since_id: last_published&.last_tweet_id.to_i)
 
     desc_tweets = []
 

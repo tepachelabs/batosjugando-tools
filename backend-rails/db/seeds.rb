@@ -10,8 +10,11 @@ if Rails.env.development?
   puts 'Adding Developments Seeds...'
 
   # Users
-  AdminUser.create!(email: 'admin@otfusion.org', password: 'password', password_confirmation: 'password')
+  admin = AdminUser.create!(email: 'admin@otfusion.org', password: 'password', password_confirmation: 'password')
 
-  # Twitter
-  ReadTweet.create!(username: 'batosjugando')
+  # Reddit
+  RedditToken.create!(admin_user_id: admin.id)
+
+  # LastPublished
+  LastPublished.create!(twitter_username: 'batosjugando')
 end
