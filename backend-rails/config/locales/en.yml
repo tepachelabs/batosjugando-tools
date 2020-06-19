@@ -30,4 +30,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  active_admin:
+    reddit_token:
+      empty_row_header: 'It is okay if this field is empty!'
+      empty_row_body: 'Just remember to log in into reddit and in this panel'

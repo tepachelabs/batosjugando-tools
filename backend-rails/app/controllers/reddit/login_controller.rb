@@ -4,9 +4,7 @@ class Reddit::LoginController < ApplicationController
   end
 
   def redirect
-    if current_admin_user.present?
-      oauth_service.get_authorization_token(current_admin_user, params[:code])
-    end
+    oauth_service.get_authorization_token(current_admin_user, params[:code]) if current_admin_user.present?
 
     redirect_to admin_dashboard_path
   end
