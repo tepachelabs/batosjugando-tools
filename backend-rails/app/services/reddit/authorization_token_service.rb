@@ -7,7 +7,7 @@ class Reddit::AuthorizationTokenService
     reddit_token = if admin_user.reddit_token.present?
                      admin_user.reddit_token
                    else
-                     RedditToken.find_or_create(admin_user_id: admin_user.id)
+                     RedditToken.find_or_create_by(admin_user_id: admin_user.id)
                    end
 
     response = @oauth_client.get_token(code)
