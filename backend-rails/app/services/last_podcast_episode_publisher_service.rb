@@ -1,4 +1,8 @@
 class LastPodcastEpisodePublisherService
+  PUBLISH_LIST_ORDER = [
+    'reddit'
+  ].freeze
+
   def initialize(episode_reader = nil, podcast_episode_publisher = nil)
     @episode_reader = episode_reader || Anchor::RSSReaderService.new.call
     @podcast_episode_publisher = podcast_episode_publisher || PodcastEpisodePublisherService.new
@@ -18,8 +22,10 @@ class LastPodcastEpisodePublisherService
   private
 
   def publish(admin_user, episode)
-    # TODO here I should include each service... or somehow create a strategy to include them in a single place
-    @podcast_episode_publisher.call(admin_user, episode, 'reddit')
+    PUBLISH_LIST_ORDER.each do |platform|
+      publish_job = PublishJob.create(platform: platform, podcast_episode: episode)
+      @podcast_episode_publisher.call(admin_user, publish_job)
+    end
   end
 
   def save_all(episodes)
