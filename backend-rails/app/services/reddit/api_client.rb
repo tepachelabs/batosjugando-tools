@@ -30,11 +30,11 @@ class Reddit::ApiClient < Reddit::BaseClient
   private
 
   def submit_link_body(subreddit, options = {})
-    body = %W[sr:#{subreddit}
-              url:#{options[:submit_title]}
-              title:#{options[:submit_url]}
-              kind:link
-              sendreplies:true]
+    body = %W[sr=#{subreddit}
+              url=#{options[:submit_url]}
+              title=#{options[:submit_title]}
+              kind=link
+              sendreplies=true]
 
     body < "flair_id:#{options[:flair_id]}" if options[:flair_id].present?
 

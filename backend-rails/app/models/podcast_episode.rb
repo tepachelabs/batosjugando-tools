@@ -1,3 +1,3 @@
 class PodcastEpisode < ApplicationRecord
-  has_one :publish_job
+  has_many :publish_jobs
 end

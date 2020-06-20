@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_20_000709) do
+ActiveRecord::Schema.define(version: 2020_06_20_012318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,13 +63,8 @@ ActiveRecord::Schema.define(version: 2020_06_20_000709) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "publish_jobs", force: :cascade do |t|
-    t.bigint "podcast_episode_id"
-    t.string "platform"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["podcast_episode_id"], name: "index_publish_jobs_on_podcast_episode_id"
-  end
+# Could not dump table "publish_jobs" because of following StandardError
+#   Unknown type 'published_job_status' for column 'status'
 
   create_table "reddit_tokens", force: :cascade do |t|
     t.string "auth_token", default: ""
