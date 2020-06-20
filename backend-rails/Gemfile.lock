@@ -67,6 +67,7 @@ GEM
       io-like (~> 0.3.0)
     arel (9.0.0)
     ast (2.4.1)
+    awesome_print (1.8.0)
     bcrypt (3.1.13)
     bindex (0.8.1)
     bootsnap (1.4.6)
@@ -422,6 +423,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
+  awesome_print
   bootsnap (>= 1.1.0)
   byebug
   cancancan
