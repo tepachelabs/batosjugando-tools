@@ -6,7 +6,7 @@ class Anchor::RSSReaderService
       episode = PodcastEpisode.find_or_create_by(url: item.url)
       break if exists?(episode)
 
-      episodes << episode
+      episodes << item
     end
 
     episodes

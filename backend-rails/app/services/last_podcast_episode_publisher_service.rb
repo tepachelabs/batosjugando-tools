@@ -4,7 +4,7 @@ class LastPodcastEpisodePublisherService
   ].freeze
 
   def initialize(episode_reader = nil, podcast_episode_publisher = nil)
-    @episode_reader = episode_reader || Anchor::RSSReaderService.new.call
+    @episode_reader = episode_reader || Anchor::RSSReaderService.new
     @podcast_episode_publisher = podcast_episode_publisher || PodcastEpisodePublisherService.new
   end
 
@@ -13,7 +13,7 @@ class LastPodcastEpisodePublisherService
 
     return if episodes.count.zero?
 
-    save_all episodes
+    saved = save_all episodes
 
     puts 'Notification: more than 1 episode to publish, will publish last one.'
     publish(AdminUser.first, saved.first)
