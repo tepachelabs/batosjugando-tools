@@ -12,6 +12,7 @@ Some tools to make life easier to all on Batos Jugando, this is the web app that
 ## Development
 
 * Ruby version: `2.6.5`
+> Recommended to use: [rbenv](https://github.com/rbenv/rbenv) to handle ruby versions.
 
 * System dependencies (See `Gemfile`)
 

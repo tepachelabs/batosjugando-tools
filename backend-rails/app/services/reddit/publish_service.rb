@@ -6,7 +6,7 @@ class Reddit::PublishService < Publish::BaseService
 
   def publish(user, publish_job)
     reddit_token = user.reddit_token
-    return unless @oauth_service.refresh_authorization_token(reddit_token)
+    return false unless @oauth_service.refresh_authorization_token(reddit_token)
 
     @api_client.add_token(reddit_token.auth_token)
 
@@ -30,7 +30,7 @@ class Reddit::PublishService < Publish::BaseService
 
     response = @api_client.submit_link(subreddit, options)
 
-    publish_job.update(status: "published") if response.code == 200
+    publish_job.update(status: 'published') if response.code == 200
   end
 
   def send_to_videogames(publish_job)
@@ -49,6 +49,6 @@ class Reddit::PublishService < Publish::BaseService
 
     response = @api_client.submit_link('videogames', options)
 
-    publish_job.update(status: "published") if response.code == 200
+    publish_job.update(status: 'published') if response.code == 200
   end
 end

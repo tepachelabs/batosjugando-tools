@@ -4,7 +4,7 @@ class AddStatusToPublishJob < ActiveRecord::Migration[5.2]
       CREATE TYPE published_job_status AS ENUM ('published', 'unpublished', 'in_progress', 'failed');
     SQL
     add_column :publish_jobs, :status, :published_job_status, default: :unpublished
-    add_index :publish_jobs, [:podcast_episode_id, :platform], unique: true
+    add_index :publish_jobs, %i[podcast_episode_id platform], unique: true
     add_index :publish_jobs, :status
   end
 
