@@ -11,7 +11,7 @@ ActiveAdmin.register PublishJob do
     actions
   end
 
-  form do |f|
+  form do |_f|
     inputs 'Details' do
       input :podcast_episode
       input :platform, as: :select, include_blank: false, collection: PublishJob::PLATFORMS_TO_PUBLISH

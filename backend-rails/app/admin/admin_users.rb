@@ -7,7 +7,7 @@ ActiveAdmin.register AdminUser do
     column :email
     column :current_sign_in_at
     column :sign_in_count
-    column "Reddit Token" do |admin|
+    column 'Reddit Token' do |admin|
       admin.reddit_token.present?
     end
     column :created_at

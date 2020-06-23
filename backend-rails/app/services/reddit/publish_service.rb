@@ -30,7 +30,7 @@ class Reddit::PublishService < Publish::BaseService
 
     response = @api_client.submit_link(subreddit, options)
 
-    publish_job.update(status: "published") if response.code == 200
+    publish_job.update(status: 'published') if response.code == 200
   end
 
   def send_to_videogames(publish_job)
@@ -49,6 +49,6 @@ class Reddit::PublishService < Publish::BaseService
 
     response = @api_client.submit_link('videogames', options)
 
-    publish_job.update(status: "published") if response.code == 200
+    publish_job.update(status: 'published') if response.code == 200
   end
 end

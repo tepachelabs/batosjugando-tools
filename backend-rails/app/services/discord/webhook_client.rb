@@ -7,7 +7,7 @@ class Discord::WebhookClient
 
   def send_message(message)
     self.class.post(@webhook_url, body: body(message),
-                       headers: { 'Content-Type' => 'application/json' })
+                                  headers: { 'Content-Type' => 'application/json' })
   end
 
   private

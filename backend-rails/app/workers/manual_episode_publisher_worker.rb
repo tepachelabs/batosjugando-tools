@@ -8,5 +8,4 @@ class ManualEpisodePublisherWorker
     publish_job = PublishJob.find(publish_job_id)
     PodcastEpisodePublisherService.new.call(user, publish_job)
   end
-
 end
