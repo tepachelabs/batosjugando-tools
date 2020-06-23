@@ -6,7 +6,7 @@ class Reddit::PublishService < Publish::BaseService
 
   def publish(user, publish_job)
     reddit_token = user.reddit_token
-    return unless @oauth_service.refresh_authorization_token(reddit_token)
+    return false unless @oauth_service.refresh_authorization_token(reddit_token)
 
     @api_client.add_token(reddit_token.auth_token)
 
