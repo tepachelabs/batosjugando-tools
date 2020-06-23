@@ -8,5 +8,8 @@ class PodcastEpisodePublisherService
 
   def instantiate_publish_service(platform)
     "#{platform.camelize}::PublishService".constantize.new
+  rescue NameError => exception
+    Raven.extra_context platform: platform
+    Raven.capture_exception(exception)
   end
 end

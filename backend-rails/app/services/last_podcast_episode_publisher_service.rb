@@ -13,10 +13,10 @@ class LastPodcastEpisodePublisherService
 
     return if episodes.count.zero?
 
-    saved = save_all episodes
+    episodes = save_all episodes
 
     puts 'Notification: more than 1 episode to publish, will publish last one.'
-    publish(AdminUser.first, saved.first)
+    publish(AdminUser.first, episodes.first)
   end
 
   private

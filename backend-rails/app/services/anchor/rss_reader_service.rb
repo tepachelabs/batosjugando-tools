@@ -3,8 +3,8 @@ class Anchor::RSSReaderService
     rss = read_rss
     episodes = []
     rss.entries.each do |item|
-      episode = PodcastEpisode.find_or_create_by(url: item.url)
-      break if exists?(episode)
+      episode = PodcastEpisode.find_by(url: item.url)
+      break if episode.present?
 
       episodes << item
     end

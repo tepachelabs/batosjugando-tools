@@ -15,7 +15,7 @@ class Reddit::PublishService < Publish::BaseService
       send_to_subreddit('otfusion', publish_job)
     else
       send_to_subreddit('videojuegos', publish_job)
-      send_to_videogames(episode)
+      send_to_videogames(publish_job)
     end
   end
 
