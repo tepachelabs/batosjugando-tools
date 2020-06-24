@@ -3,5 +3,5 @@ batos_jugando_tweets:
   cron: "*/30 * * * *" # run each 30 minutes
   class: "TwitterReaderWorker"
 el_hongo_verde_publisher:
-  cron: "0 17 * * *" # run each 30 minutes
+  cron: "0 17 * * *"
   class: "LastPodcastEpisodePublisherWorker"
