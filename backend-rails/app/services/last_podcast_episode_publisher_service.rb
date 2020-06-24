@@ -9,13 +9,13 @@ class LastPodcastEpisodePublisherService
     discord: ENV['BJ_DISCORD_WEBHOOK']
   }.freeze
 
-  def initialize(episode_reader = nil, podcast_episode_publisher = nil)
-    @episode_reader = episode_reader || Anchor::RSSReaderService.new
+  def initialize(rss_reader = nil, podcast_episode_publisher = nil)
+    @rss_reader = rss_reader || Rss::ReaderService.new
     @podcast_episode_publisher = podcast_episode_publisher || PodcastEpisodePublisherService.new
   end
 
   def call
-    episodes = @episode_reader.call
+    episodes = @rss_reader.call
 
     return if episodes.count.zero?
 

@@ -1,4 +1,4 @@
-class Anchor::RSSReaderService
+class Rss::ReaderService
   def call
     rss = read_rss
     episodes = []
