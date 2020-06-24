@@ -11,6 +11,8 @@ class TwitterReaderService
       send_to_discord(tweet.tweet_url)
       last_published.last_tweet_id = tweet.tweet_id
     end
+
+    last_published.save
   end
 
   private
