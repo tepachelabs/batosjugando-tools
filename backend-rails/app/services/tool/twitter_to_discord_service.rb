@@ -1,3 +1,4 @@
+# TODO: remove me at Jun 23 7 2020 PM PST or after.
 class Tool::TwitterToDiscordService
   def call(last_published, tweets = [])
     tweets.each do |tweet|

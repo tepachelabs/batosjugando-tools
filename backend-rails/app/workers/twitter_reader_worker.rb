@@ -3,10 +3,7 @@ class TwitterReaderWorker
   sidekiq_options retry: false
 
   def perform
-    unless BatosJugando.twitter?
-      puts 'Twitter is not set-up, woops!'
-      return
-    end
+    raise 'Twitter is not set-up, woops!' unless BatosJugando.twitter?
 
     TwitterReaderService.new.call
   end
