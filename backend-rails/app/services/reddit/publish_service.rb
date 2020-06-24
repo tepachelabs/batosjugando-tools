@@ -28,9 +28,7 @@ class Reddit::PublishService < Publish::BaseService
       submit_url: podcast_episode.url
     }
 
-    response = @api_client.submit_link(subreddit, options)
-
-    publish_job.update(status: 'published') if response.code == 200
+    @api_client.submit_link(subreddit, options)
   end
 
   def send_to_videogames(publish_job)
@@ -47,8 +45,6 @@ class Reddit::PublishService < Publish::BaseService
       flair_id: flair_id
     }
 
-    response = @api_client.submit_link('videogames', options)
-
-    publish_job.update(status: 'published') if response.code == 200
+    @api_client.submit_link('videogames', options)
   end
 end

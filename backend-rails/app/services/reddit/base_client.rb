@@ -12,11 +12,8 @@ class Reddit::BaseClient
   private
 
   def process(response)
-    capture_error(response) if response.code != 200
-    response
-  end
+    raise "#{self.class} => Received HTTP: #{response.code} -> #{response.message}" if response.code != 200
 
-  def capture_error(response)
-    Raven.capture_message("#{self.class} => Received HTTP: #{response.code} -> #{response.message}")
+    response
   end
 end
