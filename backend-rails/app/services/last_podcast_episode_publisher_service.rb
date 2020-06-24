@@ -1,7 +1,13 @@
 class LastPodcastEpisodePublisherService
-  PUBLISH_LIST_ORDER = [
-    'reddit'
+  # push these to a configuration linked to an account and... this can be reused.
+  PUBLISH_LIST_ORDER = %i[
+    reddit
+    discord
   ].freeze
+
+  PUBLISH_CONFIG = {
+    discord: ENV['BJ_DISCORD_WEBHOOK']
+  }.freeze
 
   def initialize(episode_reader = nil, podcast_episode_publisher = nil)
     @episode_reader = episode_reader || Anchor::RSSReaderService.new
@@ -15,7 +21,6 @@ class LastPodcastEpisodePublisherService
 
     episodes = save_all episodes
 
-    puts 'Notification: more than 1 episode to publish, will publish last one.'
     publish(AdminUser.first, episodes.first)
   end
 
@@ -23,7 +28,10 @@ class LastPodcastEpisodePublisherService
 
   def publish(admin_user, episode)
     PUBLISH_LIST_ORDER.each do |platform|
-      publish_job = PublishJob.create(platform: platform, podcast_episode: episode)
+      publish_job = PublishJob.create(platform: platform,
+                                      podcast_episode: episode,
+                                      webhook_url: PUBLISH_CONFIG[platform])
+
       @podcast_episode_publisher.call(admin_user, publish_job)
     end
   end
