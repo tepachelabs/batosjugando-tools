@@ -14,4 +14,13 @@ Rails.application.routes.draw do
     get '/login', to: 'login#login'
     get '/redirect', to: 'login#redirect'
   end
+
+  namespace :oauth do
+    get '/twitter/login', to: 'login#twitter'
+    get '/twitter', to: 'login#twitter_redirect'
+
+    get '/reddit/login', to: 'login#reddit_login'
+    get '/reddit', to: 'login#reddit_redirect'
+  end
+
 end

@@ -44,6 +44,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Twitter
 gem 'twitter'
+gem 'oauth'
 
 # Http requests
 gem 'httparty'
