@@ -1,5 +1,6 @@
 class AdminUser < ApplicationRecord
-  has_one :reddit_token
+  has_one :reddit_token # TODO: remove me
+  has_one :publish_configuration
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
