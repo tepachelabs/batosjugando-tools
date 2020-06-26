@@ -7,8 +7,8 @@ ActiveAdmin.register AdminUser do
     column :email
     column :current_sign_in_at
     column :sign_in_count
-    column 'Reddit Token' do |admin|
-      admin.reddit_token.present?
+    column 'Publish Configuration' do |admin|
+      admin.publish_configuration.present?
     end
     column :created_at
     actions
@@ -35,12 +35,14 @@ ActiveAdmin.register AdminUser do
       row :updated_at
     end
 
-    panel('Reddit Token') do
-      if admin.reddit_token.present?
-        attributes_table_for admin.reddit_token do
+    panel('Publish Configuration') do
+      if admin.publish_configuration.present?
+        attributes_table_for admin.publish_configuration do
           row :id
-          row :auth_token
-          row :refresh_token
+          row :reddit_token
+          row :reddit_refresh_token
+          row :twitter_oauth_token
+          row :twitter_oauth_token_secret
         end
       else
         div class: 'blank_slate_container', id: 'dashboard_default_message' do

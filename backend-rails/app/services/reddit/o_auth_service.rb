@@ -13,8 +13,8 @@ class Reddit::OAuthService
     @authorization_token.get_token(admin_user, code)
   end
 
-  def refresh_authorization_token(reddit_token)
-    @authorization_token.refresh_token(reddit_token)
+  def refresh_authorization_token(publish_configuration)
+    @authorization_token.refresh_token(publish_configuration)
   end
 
   private
