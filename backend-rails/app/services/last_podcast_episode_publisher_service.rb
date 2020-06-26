@@ -9,9 +9,8 @@ class LastPodcastEpisodePublisherService
     discord: ENV['BJ_DISCORD_WEBHOOK']
   }.freeze
 
-  def initialize(rss_reader = nil, podcast_episode_publisher = nil)
+  def initialize(rss_reader = nil)
     @rss_reader = rss_reader || Rss::ReaderService.new
-    @podcast_episode_publisher = podcast_episode_publisher || PodcastEpisodePublisherService.new
   end
 
   def call
@@ -32,7 +31,7 @@ class LastPodcastEpisodePublisherService
                                       podcast_episode: episode,
                                       webhook_url: PUBLISH_CONFIG[platform])
 
-      @podcast_episode_publisher.call(admin_user, publish_job)
+      SingleEpisodePublisherWorker.perform_async(admin_user.id, publish_job.id)
     end
   end
 

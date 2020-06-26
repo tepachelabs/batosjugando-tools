@@ -1,4 +1,4 @@
-class ManualEpisodePublisherWorker
+class SingleEpisodePublisherWorker
   include Sidekiq::Worker
   sidekiq_options retry: false
 

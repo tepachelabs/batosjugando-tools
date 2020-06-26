@@ -29,7 +29,7 @@ ActiveAdmin.register PublishJob do
       publish_job.update(webhook_url: ENV['BJ_DISCORD_WEBHOOK']) if publish_job.platform == 'discord'
 
       puts "Trying to publish episode #{publish_job.podcast_episode.title} to: #{publish_job.platform}"
-      ManualEpisodePublisherWorker.perform_async(current_admin_user.id, publish_job.id)
+      SingleEpisodePublisherWorker.perform_async(current_admin_user.id, publish_job.id)
     end
 
     def permitted_params
