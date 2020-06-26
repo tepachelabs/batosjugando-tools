@@ -3,20 +3,21 @@ class Reddit::AuthorizationTokenService
     @oauth_client = oauth_client || Reddit::OAuthClient.new
   end
 
-  def get_token(admin_user, code)
-    reddit_token = if admin_user.reddit_token.present?
-                     admin_user.reddit_token
-                   else
-                     RedditToken.find_or_create_by(admin_user_id: admin_user.id)
-                   end
+  def get_token(user, code)
+    publish_config =
+      if user.publish_configuration.present?
+        user.publish_configuration
+      else
+        PublishConfiguration.find_or_create_by(admin_user: user)
+      end
 
     response = @oauth_client.get_token(code)
 
-    reddit_token.update(auth_token: response['access_token'], refresh_token: response['refresh_token'])
+    publish_config.update(reddit_token: response['access_token'], reddit_refresh_token: response['refresh_token'])
   end
 
-  def refresh_token(reddit_token)
-    response = @oauth_client.refresh_token(reddit_token.refresh_token)
-    reddit_token.update(auth_token: response['access_token'])
+  def refresh_token(publish_config)
+    response = @oauth_client.refresh_token(publish_config.reddit_refresh_token)
+    publish_config.update(reddit_token: response['access_token'])
   end
 end

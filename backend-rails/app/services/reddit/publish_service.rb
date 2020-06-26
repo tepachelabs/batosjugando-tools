@@ -5,10 +5,10 @@ class Reddit::PublishService < Publish::BaseService
   end
 
   def publish(user, publish_job)
-    reddit_token = user.reddit_token
-    return false unless @oauth_service.refresh_authorization_token(reddit_token)
+    publish_configuration = user.publish_configuration
+    return false unless @oauth_service.refresh_authorization_token(publish_configuration)
 
-    @api_client.add_token(reddit_token.auth_token)
+    @api_client.add_token(publish_configuration.reddit_token)
 
     # hardcoded meh
     if Rails.env.development?
