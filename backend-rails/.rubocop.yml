@@ -1,3 +1,6 @@
+AllCops:
+  Excludes:
+    - db/schema.rb
 Style/StringLiterals:
   Exclude:
     - db/schema.rb
