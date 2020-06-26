@@ -1,7 +1,8 @@
 class Discord::PublishService < Publish::BaseService
-  def publish(_user, publish_job)
+  def publish(user, publish_job)
+    publish_config = user.publish_configuration
     connection = connection(publish_job)
-    connection.send_message(message(publish_job))
+    connection.send_message(message(publish_config))
   end
 
   private
@@ -10,8 +11,7 @@ class Discord::PublishService < Publish::BaseService
     publish_job.message || publish_job.podcast_episode.url
   end
 
-  def connection(publish_job)
-    # we can obtain the bot config from the publish job and not just use the webhook url.
-    @connection ||= Discord::WebhookClient.new(publish_job.webhook_url)
+  def connection(publish_config)
+    @connection ||= Discord::WebhookClient.new(publish_config.discord_webhook_url)
   end
 end

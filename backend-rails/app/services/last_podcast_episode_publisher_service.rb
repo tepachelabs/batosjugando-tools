@@ -3,11 +3,8 @@ class LastPodcastEpisodePublisherService
   PUBLISH_LIST_ORDER = %i[
     reddit
     discord
+    twitter
   ].freeze
-
-  PUBLISH_CONFIG = {
-    discord: ENV['BJ_DISCORD_WEBHOOK']
-  }.freeze
 
   def initialize(rss_reader = nil)
     @rss_reader = rss_reader || Rss::ReaderService.new
@@ -27,10 +24,7 @@ class LastPodcastEpisodePublisherService
 
   def publish(admin_user, episode)
     PUBLISH_LIST_ORDER.each do |platform|
-      publish_job = PublishJob.create(platform: platform,
-                                      podcast_episode: episode,
-                                      webhook_url: PUBLISH_CONFIG[platform])
-
+      publish_job = PublishJob.create(platform: platform, podcast_episode: episode, status: 'in_progress')
       SingleEpisodePublisherWorker.perform_async(admin_user.id, publish_job.id)
     end
   end
