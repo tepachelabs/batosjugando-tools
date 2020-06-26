@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_200_623_183_435) do
+ActiveRecord::Schema.define(version: 20_200_625_212_243) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,6 +62,17 @@ ActiveRecord::Schema.define(version: 20_200_623_183_435) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "publish_configurations", force: :cascade do |t|
+    t.string "reddit_token"
+    t.string "reddit_refresh_token"
+    t.string "twitter_oauth_token"
+    t.string "twitter_oauth_token_secret"
+    t.bigint "admin_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_user_id"], name: "index_publish_configurations_on_admin_user_id"
+  end
+
   # Could not dump table "publish_jobs" because of following StandardError
   #   Unknown type 'published_job_status' for column 'status'
 
@@ -74,6 +85,7 @@ ActiveRecord::Schema.define(version: 20_200_623_183_435) do
     t.index ["admin_user_id"], name: "index_reddit_tokens_on_admin_user_id"
   end
 
+  add_foreign_key "publish_configurations", "admin_users"
   add_foreign_key "publish_jobs", "podcast_episodes", on_delete: :cascade
   add_foreign_key "reddit_tokens", "admin_users"
 end

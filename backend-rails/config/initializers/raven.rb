@@ -1,6 +1,6 @@
 module BatosJugando
   def self.sentry?
-    ENV['BJ_RAVEN_DNS'].present?
+    ENV['BJ_RAVEN_DNS'].present? && Rails.env.production?
   end
 end
 

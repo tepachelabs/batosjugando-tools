@@ -8,8 +8,7 @@ Style/Documentation:
 Style/ClassAndModuleChildren:
   Enabled: false
 Metrics/AbcSize:
-  Exclude:
-    - app/services/twitter/generate_client.rb
+  Enabled: false
 Metrics/MethodLength:
   Enabled: false
 Metrics/BlockLength:

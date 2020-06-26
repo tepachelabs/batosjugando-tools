@@ -43,8 +43,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Twitter
-gem 'twitter'
 gem 'oauth'
+gem 'twitter'
 
 # Http requests
 gem 'httparty'
