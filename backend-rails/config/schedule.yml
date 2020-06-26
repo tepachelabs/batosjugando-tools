@@ -1,6 +1,6 @@
 # config/schedule.yml
 batos_jugando_tweets:
-  cron: "*/30 * * * *" # run each 30 minutes
+  cron: "*/15 * * * *" # run each 15 minutes
   class: "TwitterReaderWorker"
 el_hongo_verde_publisher:
   cron: "0 17 * * *"
