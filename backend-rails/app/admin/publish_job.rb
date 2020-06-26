@@ -25,9 +25,6 @@ ActiveAdmin.register PublishJob do
     def publish_to_platform(publish_job)
       publish_job.update(status: 'in_progress')
 
-      # TODO: change me once separation of publish configuration
-      publish_job.update(webhook_url: ENV['BJ_DISCORD_WEBHOOK']) if publish_job.platform == 'discord'
-
       puts "Trying to publish episode #{publish_job.podcast_episode.title} to: #{publish_job.platform}"
       SingleEpisodePublisherWorker.perform_async(current_admin_user.id, publish_job.id)
     end

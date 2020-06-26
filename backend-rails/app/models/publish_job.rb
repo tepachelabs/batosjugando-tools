@@ -6,7 +6,7 @@ class PublishJob < ApplicationRecord
     failed: 'failed'
   }, _prefix: :status
 
-  PLATFORMS_TO_PUBLISH = %w[reddit twitter facebook discord slack].freeze
+  PLATFORMS_TO_PUBLISH = %w[reddit twitter discord slack].freeze
 
   belongs_to :podcast_episode
   validates_uniqueness_of :podcast_episode, scope: :platform
