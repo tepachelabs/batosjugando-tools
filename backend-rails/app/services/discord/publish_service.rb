@@ -1,8 +1,8 @@
 class Discord::PublishService < Publish::BaseService
   def publish(user, publish_job)
     publish_config = user.publish_configuration
-    connection = connection(publish_job)
-    connection.send_message(message(publish_config))
+    connection = connection(publish_config)
+    connection.send_message(message(publish_job))
   end
 
   private
