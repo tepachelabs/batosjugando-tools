@@ -34,8 +34,7 @@ class Reddit::PublishService < Publish::BaseService
   def send_to_videogames(publish_job)
     podcast_episode = publish_job.podcast_episode
     flair_list = @api_client.flair_list('videogames')
-    flair_item = JSON.parse(flair_list).find { |e| e[:text] == 'Other' }
-    flair_id = flair_item[:id]
+    flair_id = flair_list.find { |e| e['text'] == 'Other' }['id']
 
     return if flair_id.nil?
 
