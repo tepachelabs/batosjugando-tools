@@ -36,7 +36,7 @@ class Reddit::ApiClient < Reddit::BaseClient
               kind=link
               sendreplies=true]
 
-    body < "flair_id:#{options[:flair_id]}" if options[:flair_id].present?
+    body << "flair_id=#{options[:flair_id]}" if options[:flair_id].present?
 
     body.join('&')
   end
