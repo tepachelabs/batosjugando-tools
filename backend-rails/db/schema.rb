@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_26_231341) do
+ActiveRecord::Schema.define(version: 2020_08_16_225513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,21 @@ ActiveRecord::Schema.define(version: 2020_06_26_231341) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "juegathon_participants", force: :cascade do |t|
+    t.string "name"
+    t.string "avatar_url"
+    t.string "description"
+    t.string "email"
+    t.string "favorite_game"
+    t.string "twitter_username"
+    t.string "twitch_username"
+    t.string "other_link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "participations", default: 0
+    t.index ["email"], name: "index_juegathon_participants_on_email"
   end
 
   create_table "last_published", force: :cascade do |t|

@@ -66,6 +66,9 @@ gem 'sidekiq-cron'
 # Ruby progressbar master race.
 gem 'ruby-progressbar'
 
+# CORS middleware.
+gem 'rack-cors'
+
 # Testing and Debugging in general
 group :test, :development do
   gem 'rspec-rails', '~> 4.0.0'
@@ -79,6 +82,7 @@ group :test do
   gem 'chromedriver-helper'
 
   gem 'factory_bot'
+  gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
   gem 'webmock'
 end
 
@@ -106,12 +110,12 @@ gem 'dotenv-rails', groups: %i[development test]
 
 # Capistrano and deployment
 group :development do
-  gem 'capistrano',         require: false
-  gem 'capistrano-bundler', require: false
-  gem 'capistrano-rails',   require: false
-  gem 'capistrano-rvm',     require: false
-  gem 'capistrano-sidekiq'
+  gem 'capistrano', require: false
   gem 'capistrano3-puma', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-rvm', require: false
+  gem 'capistrano-sidekiq'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

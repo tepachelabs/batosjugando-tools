@@ -1,4 +1,6 @@
 ActiveAdmin.register PodcastEpisode do
+  menu parent: 'Podcast', label: 'Episodes'
+
   includes :publish_jobs
   actions :all, except: %i[destroy edit]
 

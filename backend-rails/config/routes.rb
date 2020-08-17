@@ -22,4 +22,8 @@ Rails.application.routes.draw do
     get '/reddit/login', to: 'login#reddit_login'
     get '/reddit', to: 'login#reddit_redirect'
   end
+
+  namespace :api do
+    get 'juegathon/participants', to: 'juegathon#participants'
+  end
 end

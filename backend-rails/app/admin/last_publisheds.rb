@@ -1,4 +1,6 @@
 ActiveAdmin.register LastPublished do
+  menu parent: 'Publish', label: 'Last Published'
+
   index do
     id_column
     column :name

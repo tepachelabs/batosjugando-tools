@@ -1,4 +1,6 @@
 ActiveAdmin.register PublishConfiguration do
+  menu parent: 'Publish', label: 'Configurations'
+
   index do
     selectable_column
     id_column
