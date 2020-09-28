@@ -4,6 +4,15 @@ ActiveAdmin.register PodcastEpisode do
   includes :publish_jobs
   actions :all, except: %i[destroy edit]
 
+  action_item :refresh_episodes, only: :index do
+    link_to 'Refresh Episodes', refresh_episodes_admin_podcast_episodes_path
+  end
+
+  collection_action :refresh_episodes, method: :get do
+    PodcastEpisodeSynchService.new.call
+    redirect_to collection_path, notice: 'Episodes Refreshed!'
+  end
+
   index do
     id_column
     column :title
