@@ -1,5 +1,4 @@
 class PodcastEpisodeSynchService
-
   def initialize(rss_reader = nil)
     @rss_reader = rss_reader || Rss::ReaderService.new
   end
@@ -17,7 +16,9 @@ class PodcastEpisodeSynchService
   def save_all(episodes)
     saved = []
     PodcastEpisode.transaction do
-      episodes.each do |item|
+      episodes
+        .reverse
+        .each do |item|
         saved << PodcastEpisode.create(title: item.title,
                                        url: item.url,
                                        description: item.summary,
@@ -29,5 +30,4 @@ class PodcastEpisodeSynchService
 
     saved
   end
-
 end
