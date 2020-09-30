@@ -102,6 +102,7 @@ group :development do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rubocop', require: false
+  gem 'rubocop-faker', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end

@@ -1,10 +1,15 @@
 class Rss::ReaderService
+
+  def initialize(include_all_episodes: false)
+    @include_all_episodes = include_all_episodes
+  end
+
   def call
     rss = read_rss
     episodes = []
     rss.entries.each do |item|
       episode = PodcastEpisode.find_by(url: item.url)
-      break if episode.present?
+      break if episode.present? && !@include_all_episodes
 
       episodes << item
     end
