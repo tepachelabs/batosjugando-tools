@@ -5,6 +5,6 @@ class TwitterReaderWorker
   def perform
     raise 'Twitter is not set-up, woops!' unless BatosJugando.twitter?
 
-    TwitterReaderService.new.call
+    TwitterReader.new.call
   end
 end

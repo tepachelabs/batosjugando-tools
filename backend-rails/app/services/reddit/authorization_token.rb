@@ -1,4 +1,4 @@
-class Reddit::AuthorizationTokenService
+class Reddit::AuthorizationToken
   def initialize(oauth_client = nil)
     @oauth_client = oauth_client || Reddit::OAuthClient.new
   end

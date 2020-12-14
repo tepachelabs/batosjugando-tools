@@ -1,8 +1,8 @@
-class Reddit::OAuthService
+class Reddit::OAuth
   include Reddit::Credentials
 
   def initialize(authorization_token = nil)
-    @authorization_token = authorization_token || Reddit::AuthorizationTokenService.new
+    @authorization_token = authorization_token || Reddit::AuthorizationToken.new
   end
 
   def login_url

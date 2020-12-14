@@ -1,4 +1,4 @@
-class Twitter::PublishService < Publish::BaseService
+class Twitter::Publish < Publish::BaseService
 
   def publish(user, publish_job)
     publish_configuration = user.publish_configuration

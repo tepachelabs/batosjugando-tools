@@ -1,9 +1,9 @@
-describe Twitter::SearchService do
+describe Twitter::Search do
   fixtures :last_published
   let(:twitter_client) { double('twitter_client') }
   describe '#call' do
     subject do
-      Twitter::SearchService.new(twitter_client)
+      Twitter::Search.new(twitter_client)
     end
 
     let(:tweet_1) { OpenStruct.new(id: 9_817_238_193_121, text: 'sample text for 1', url: 'https://localhost/1') }

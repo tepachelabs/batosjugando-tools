@@ -1,4 +1,4 @@
-class Twitter::SearchService
+class Twitter::Search
   def initialize(client = nil)
     @client = client || Twitter::GenerateClient.call
   end

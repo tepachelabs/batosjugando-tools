@@ -1,4 +1,4 @@
-class Twitter::OAuthService
+class Twitter::OAuth
   def initialize(access_token_client = nil)
     @access_token_client = access_token_client || Twitter::AccessTokenClient.new
   end
