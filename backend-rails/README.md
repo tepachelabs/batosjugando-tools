@@ -1,47 +1,55 @@
 # Batos Jugando Webapp Tools
 
-Some tools to make life easier to all on Batos Jugando, this is the web app that handles everything
+Web App and API to make life easier for the community of Batos Jugando.
 
-## Currently doing:
+## Current Features:
 - Automate `El Hongo Verde` publish process
 - Twitter reader to check the `BatosJugando` account and post `#discord` tweets to the Discord Server
-- Discord Bot for... stuff?
-- ?? 
+- ??
 - PROFIT!
+
+## Requirements
+
+* Ruby version: `2.6.5`
+  > Recommended to use: [rbenv](https://github.com/rbenv/rbenv) to handle ruby versions.
+* Database: `PostgreSQL`
+* System dependencies (See `Gemfile`)
 
 ## Development
 
-* Ruby version: `2.6.5`
-> Recommended to use: [rbenv](https://github.com/rbenv/rbenv) to handle ruby versions.
-
-* System dependencies (See `Gemfile`)
-
 ## Configuration
 
-See the `env.example` file to fill the environment variables, also the secrets file is working with production
- credentials just in case... ask for the private key to change those.
+- There are a few environment variables used in the project, 
+ see `env.example` file to fill the environment variables when required.
+
+### Secrets
+- The secrets file is working with production
+ credentials.
+- Add a issue in order to add a new secret with the production values correctly.
 
 ### Database creation
-Just install Postgresql latest version.
-
-### Database initialization
 As simple as `bundle install rails db:create`
 
+### Database initialization
+As simple as `bundle install rails db:seed`, the main user is `admin@otfusion.org` and password is simply: `password`.
+
 ### How to run the test suite
-`RSpec`
+Run `rspec` in this directory.
 
 ### Services (job queues, cache servers, search engines, etc.)
-run `Sidekiq` and that's it.
+As simple as `bundle exec sidekiq`
 
-### Deployment instructions
-Capistrano makes everything, it sends everything to `digital ocean` to the `otfusion` server,
- you just require SSH access.
+## Deployment
+- Currently we are using capistrano to deploy the production environment (single env),
+- SSH access is required
+
+In order to deploy this product, you require all the
 
 
-## 3rd party stuff
+## 3rd party information
 
 ### Reddit
-I created a dev app for Reddit but you can use your own, go to: https://www.reddit.com/prefs/apps
-
-The redirect site for the test (added on credentials) is `http://localhost:3000/reddit/redirect`
+- Credentials already present for development.
+- In order to create your own secrets file to test, go to: https://www.reddit.com/prefs/apps
+- The redirect site for the test (added on credentials) is `http://localhost:3001/reddit/redirect`
 
