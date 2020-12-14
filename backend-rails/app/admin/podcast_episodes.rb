@@ -13,7 +13,7 @@ ActiveAdmin.register PodcastEpisode do
   end
 
   collection_action :refresh_episodes, method: :get do
-    PodcastEpisodeSynchService.new.call
+    PodcastEpisodeSynch.new.call
     redirect_to collection_path, notice: 'Episodes Refreshed!'
   end
 

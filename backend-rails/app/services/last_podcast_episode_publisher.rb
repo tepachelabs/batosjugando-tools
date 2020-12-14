@@ -1,4 +1,4 @@
-class LastPodcastEpisodePublisherService
+class LastPodcastEpisodePublisher
   # push these to a configuration linked to an account and... this can be reused.
   PUBLISH_LIST_ORDER = %i[
     reddit
@@ -7,7 +7,7 @@ class LastPodcastEpisodePublisherService
   ].freeze
 
   def initialize(synch_service = nil)
-    @synch_service = synch_service || PodcastEpisodeSynchService.new
+    @synch_service = synch_service || PodcastEpisodeSynch.new
   end
 
   def call

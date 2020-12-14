@@ -1,4 +1,4 @@
-class PodcastEpisodePublisherService
+class PodcastEpisodePublisher
   def call(user, publish_job)
     raise StandardError('No publish configuration present!') if user.publish_configuration.nil?
 
@@ -20,7 +20,7 @@ class PodcastEpisodePublisherService
   private
 
   def instantiate_publish_service(platform)
-    "#{platform.camelize}::PublishService".constantize.new
+    "#{platform.camelize}::Publish".constantize.new
   rescue NameError => e
     Raven.extra_context platform: platform
     Raven.capture_exception(e)

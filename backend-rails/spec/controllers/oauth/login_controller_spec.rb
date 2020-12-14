@@ -10,7 +10,7 @@ describe Oauth::LoginController do
     let(:redirect_url) { 'http://localhost:3000/redirect' }
 
     before do
-      expect(Twitter::OAuthService).to receive(:new)
+      expect(Twitter::OAuth).to receive(:new)
         .and_return(twitter_oauth_service)
     end
 
@@ -35,7 +35,7 @@ describe Oauth::LoginController do
     let(:redirect_url) { 'http://localhost:3000/redirect' }
 
     before do
-      expect(Reddit::OAuthService).to receive(:new)
+      expect(Reddit::OAuth).to receive(:new)
         .and_return(reddit_oauth_service)
     end
 

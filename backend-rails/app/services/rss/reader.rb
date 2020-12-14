@@ -1,4 +1,4 @@
-class Rss::ReaderService
+class Rss::Reader
 
   def initialize(include_all_episodes: false)
     @include_all_episodes = include_all_episodes

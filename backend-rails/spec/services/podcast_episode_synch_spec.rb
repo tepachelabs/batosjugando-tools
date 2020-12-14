@@ -1,4 +1,4 @@
-describe PodcastEpisodeSynchService do
+describe PodcastEpisodeSynch do
   let(:rss_reader) { double }
   let(:rss_response) do
     build_list(:rss_response, 10)

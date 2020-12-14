@@ -10,11 +10,6 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/admin/sidekiq'
   end
 
-  namespace :reddit do
-    get '/login', to: 'login#login'
-    get '/redirect', to: 'login#redirect'
-  end
-
   namespace :oauth do
     get '/twitter/login', to: 'login#twitter_login'
     get '/twitter', to: 'login#twitter_redirect'

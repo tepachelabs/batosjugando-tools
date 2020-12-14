@@ -1,6 +1,6 @@
-class PodcastEpisodeSynchService
+class PodcastEpisodeSynch
   def initialize(rss_reader = nil)
-    @rss_reader = rss_reader || Rss::ReaderService.new
+    @rss_reader = rss_reader || Rss::Reader.new
   end
 
   def call

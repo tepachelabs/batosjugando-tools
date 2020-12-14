@@ -1,6 +1,6 @@
-class TwitterReaderService
+class TwitterReader
   def initialize(search_service = nil, discord_webhook_client = nil)
-    @search_service = search_service || Twitter::SearchService.new
+    @search_service = search_service || Twitter::Search.new
     @discord_webhook_client = discord_webhook_client || Discord::WebhookClient.new(discord_webhook)
   end
 

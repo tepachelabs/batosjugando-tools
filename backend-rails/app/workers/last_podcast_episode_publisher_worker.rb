@@ -3,6 +3,6 @@ class LastPodcastEpisodePublisherWorker
   sidekiq_options retry: false
 
   def perform
-    LastPodcastEpisodePublisherService.new.call
+    LastPodcastEpisodePublisher.new.call
   end
 end

@@ -32,10 +32,10 @@ class Oauth::LoginController < ApplicationController
   private
 
   def twitter_oauth_service
-    @twitter_oauth_service ||= Twitter::OAuthService.new
+    @twitter_oauth_service ||= Twitter::OAuth.new
   end
 
   def reddit_oauth_service
-    @reddit_oauth_service ||= Reddit::OAuthService.new
+    @reddit_oauth_service ||= Reddit::OAuth.new
   end
 end

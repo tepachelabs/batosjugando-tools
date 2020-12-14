@@ -1,4 +1,4 @@
-class Discord::PublishService < Publish::BaseService
+class Discord::Publish < Publish::BaseService
   def publish(user, publish_job)
     publish_config = user.publish_configuration
     connection = connection(publish_config)
