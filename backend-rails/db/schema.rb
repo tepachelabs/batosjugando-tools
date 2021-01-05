@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_16_225513) do
+ActiveRecord::Schema.define(version: 2020_12_15_005650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,15 @@ ActiveRecord::Schema.define(version: 2020_08_16_225513) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "juegathon_events", force: :cascade do |t|
+    t.string "name"
+    t.datetime "start_datetime"
+    t.datetime "end_datetime"
+    t.decimal "total_donation", precision: 10, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "juegathon_participants", force: :cascade do |t|
     t.string "name"
     t.string "avatar_url"
@@ -54,6 +63,15 @@ ActiveRecord::Schema.define(version: 2020_08_16_225513) do
     t.datetime "updated_at", null: false
     t.integer "participations", default: 0
     t.index ["email"], name: "index_juegathon_participants_on_email"
+  end
+
+  create_table "juegathon_participations", force: :cascade do |t|
+    t.bigint "juegathon_participants_id"
+    t.bigint "juegathon_events_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["juegathon_events_id"], name: "index_juegathon_participations_on_juegathon_events_id"
+    t.index ["juegathon_participants_id"], name: "index_juegathon_participations_on_juegathon_participants_id"
   end
 
   create_table "last_published", force: :cascade do |t|
@@ -93,6 +111,8 @@ ActiveRecord::Schema.define(version: 2020_08_16_225513) do
 # Could not dump table "publish_jobs" because of following StandardError
 #   Unknown type 'published_job_status' for column 'status'
 
+  add_foreign_key "juegathon_participations", "juegathon_events", column: "juegathon_events_id"
+  add_foreign_key "juegathon_participations", "juegathon_participants", column: "juegathon_participants_id"
   add_foreign_key "publish_configurations", "admin_users"
   add_foreign_key "publish_jobs", "podcast_episodes", on_delete: :cascade
 end
