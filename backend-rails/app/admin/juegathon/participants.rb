@@ -29,7 +29,6 @@ ActiveAdmin.register Juegathon::Participant do
       row :events do |m|
         m.events.map(&:name)
       end
-      active_admin_comments
     end
   end
 
