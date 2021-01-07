@@ -16,6 +16,23 @@ ActiveAdmin.register Juegathon::Participant do
     actions
   end
 
+  show do
+    attributes_table do
+      row :name
+      row :avatar_url
+      row :description
+      row :email
+      row :favorite_game
+      row :twitter_username
+      row :twitch_username
+      row :other_link
+      row :events do |m|
+        m.events.map(&:name)
+      end
+      active_admin_comments
+    end
+  end
+
   form do |f|
     f.inputs 'Participant Details' do
       f.input :name
