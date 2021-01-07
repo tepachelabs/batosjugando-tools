@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock '~> 3.14.0'
+lock '~> 3.15.0'
 
 # Change these
 server 'otfusion.org', port: 22, roles: %i[web app db], primary: true
