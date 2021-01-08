@@ -4,7 +4,7 @@ lock '~> 3.15.0'
 # Change these
 server 'otfusion.org', port: 22, roles: %i[web app db], primary: true
 
-set :repo_url,        'git@github.com:jmsalcido/batosjugando-tools.git'
+set :repo_url,        'git@github.com:tepachelabs/batosjugando-tools.git'
 set :application,     'batosjugando'
 set :user,            'rails'
 set :puma_threads,    [4, 16]
