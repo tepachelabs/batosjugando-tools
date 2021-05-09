@@ -53,9 +53,15 @@ jobs:
         ruby-version: ${{ matrix.ruby-version }}
         working-directory: 'backend-rails'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: Run rubocop
-      working-directory: ./backend-rails
-      run: bundle exec rubocop --fail-level F
+    
+    - name: rubocop
+      uses: reviewdog/action-rubocop@v1
+      with:
+        rubocop_version: gemfile
+        rubocop_extensions: rubocop-rails:gemfile rubocop-rspec:gemfile
+        github_token: ${{ secrets.github_token }}
+        reporter: github-pr-review # Default is github-pr-check
+
     - name: Run tests
       working-directory: ./backend-rails
       run: bundle exec rspec
