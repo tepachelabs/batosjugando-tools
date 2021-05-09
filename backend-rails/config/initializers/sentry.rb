@@ -9,5 +9,5 @@ if BatosJugando.sentry?
     config.dsn = ENV['BJ_RAVEN_DNS']
   end
 
-  puts 'Raven setup complete'
+  puts 'Sentry setup complete'
 end
