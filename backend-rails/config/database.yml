@@ -19,6 +19,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  host: <%= ENV.fetch('POSTGRES_HOST') { ''} %>
   username: <%= ENV.fetch('POSTGRES_USER') { 'postgres'} %>
   password: <%= ENV.fetch('POSTGRES_PASSWORD') { '' } %>
   database: <%= ENV.fetch('POSTGRES_DB') { 'batosjugando_test' } %>
