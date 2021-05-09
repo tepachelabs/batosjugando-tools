@@ -55,7 +55,7 @@ jobs:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Run rubocop
       working-directory: ./backend-rails
-      run: bundle exec rubocop
+      run: bundle exec rubocop --fail-level F
     - name: Run tests
       working-directory: ./backend-rails
       run: bundle exec rspec
