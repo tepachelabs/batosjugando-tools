@@ -8,6 +8,7 @@ on:
 
 env:
   RAILS_ENV: test
+  POSTGRES_HOST: localhost
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: password
   POSTGRES_DB: batosjugando_test
