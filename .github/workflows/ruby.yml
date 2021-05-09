@@ -29,9 +29,9 @@ jobs:
         image: postgres:11-alpine
         # Provide the password for postgres
         env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: password
-          POSTGRES_DB: batosjugando_test
+          POSTGRES_USER: "${{env.POSTGRES_USER}}"
+          POSTGRES_PASSWORD: "${{env.POSTGRES_PASSWORD}}"
+          POSTGRES_DB: "${{env.POSTGRES_DB}}"
         ports:
           - 5432:5432
 
@@ -62,6 +62,18 @@ jobs:
         rubocop_extensions: rubocop-rails:gemfile rubocop-rspec:gemfile
         github_token: ${{ secrets.github_token }}
         reporter: github-pr-review # Default is github-pr-check
+
+    - name: Setup database
+      working-directory: ./backend-rails
+      env:
+        RAILS_ENV: test
+        POSTGRES_HOST: "${{env.POSTGRES_HOST}}"
+        POSTGRES_USER: "${{env.POSTGRES_USER}}"
+        POSTGRES_PASSWORD: "${{env.POSTGRES_PASSWORD}}"
+        POSTGRES_DB: "${{env.POSTGRES_DB}}"
+      run: |
+        bundle exec rails db:create
+        bundle exec rails db:schema:load
 
     - name: Run tests
       working-directory: ./backend-rails
