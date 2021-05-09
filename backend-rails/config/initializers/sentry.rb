@@ -5,7 +5,7 @@ module BatosJugando
 end
 
 if BatosJugando.sentry?
-  Sentry.configure do |config|
+  Sentry.init do |config|
     config.dsn = ENV['BJ_RAVEN_DNS']
   end
 
