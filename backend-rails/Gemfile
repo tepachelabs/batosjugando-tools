@@ -21,7 +21,7 @@ gem 'pg'
 gem 'puma', '~> 3.11'
 
 # Sentry
-gem 'sentry-raven'
+gem 'sentry-ruby'
 
 # Javascript Runtime
 gem 'therubyracer'
