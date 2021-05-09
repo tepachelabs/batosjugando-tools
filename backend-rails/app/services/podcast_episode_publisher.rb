@@ -7,11 +7,13 @@ class PodcastEpisodePublisher
 
     # if no errors... this means that we published it succesfully.
   rescue StandardError => e
-    Raven.extra_context platform: publish_job.platform
-    Raven.extra_context user_id: user.id
-    Raven.extra_context episode_title: publish_job.podcast_episode.title
+    Sentry.with_scope do |scope|
+      scope.set_extras(platform: publish_job.platform)
+      scope.set_extras(user_id: user.id)
+      scope.set_extras(episode_title: publish_job.podcast_episode.title)
+    end
 
-    Raven.capture_exception(e)
+    Sentry.capture_exception(e)
     publish_job.update(status: 'failed')
   else
     publish_job.update(status: 'published')
@@ -22,7 +24,7 @@ class PodcastEpisodePublisher
   def instantiate_publish_service(platform)
     "#{platform.camelize}::Publish".constantize.new
   rescue NameError => e
-    Raven.extra_context platform: platform
-    Raven.capture_exception(e)
+    Sentry.extra_context platform: platform
+    Sentry.capture_exception(e)
   end
 end
