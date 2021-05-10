@@ -74,6 +74,7 @@ jobs:
         POSTGRES_DB: "${{env.POSTGRES_DB}}"
       run: |
         bundle exec rails db:create
+        bundle exec rails db:migrate
         bundle exec rails db:schema:load
 
     - name: Run tests
