@@ -1,6 +1,6 @@
 class Api::JuegathonController < ApplicationController
   def participants
-    @participants = Juegathon::Participant.includes(:participations).all
+    @participants = Juegathon::Participant.includes(:participations).all.sort_by(&:created_at)
     @events = fill_events
 
     respond_to do |format|
