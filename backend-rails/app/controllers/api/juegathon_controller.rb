@@ -11,7 +11,7 @@ class Api::JuegathonController < ApplicationController
   private
 
   def fill_events
-    events = Hash.new
+    events = {}
     Juegathon::Event.all.each do |event|
       events[event.id] = event.name
     end

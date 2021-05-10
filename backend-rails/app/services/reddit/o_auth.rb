@@ -26,7 +26,7 @@ class Reddit::OAuth
        state=batosjugando&
        redirect_uri=#{CGI.escape(reddit_redirect_url)}&
        duration=permanent&
-       scope=#{CGI.escape(reddit_api_scope)}].join('')
+       scope=#{CGI.escape(reddit_api_scope)}].join
   end
 
   def reddit_api_scope
