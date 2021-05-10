@@ -45,8 +45,7 @@ describe Reddit::ApiClient do
     context 'when flair id is not present' do
       let(:options) do
         { submit_url: body_url,
-          submit_title: body_title
-        }
+          submit_title: body_title }
       end
 
       let(:request_body) do
@@ -61,7 +60,7 @@ describe Reddit::ApiClient do
 
       it 'does successfully get called' do
         stub_request(:post, 'https://oauth.reddit.com/api/submit')
-            .to_return(status: 200, body: '', headers: {})
+          .to_return(status: 200, body: '', headers: {})
 
         subject
 
