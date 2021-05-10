@@ -6,13 +6,21 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  RAILS_ENV: test
+  POSTGRES_HOST: localhost
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: password
+  POSTGRES_DB: batosjugando_test
+
+
 jobs:
   test:
 
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby-version: ['2.6']
+        ruby-version: ['2.6.5']
         
     # Service containers to run with `container-job`
     services:
@@ -22,7 +30,12 @@ jobs:
         image: postgres:11-alpine
         # Provide the password for postgres
         env:
-          POSTGRES_PASSWORD: password
+          POSTGRES_USER: "${{env.POSTGRES_USER}}"
+          POSTGRES_PASSWORD: "${{env.POSTGRES_PASSWORD}}"
+          POSTGRES_DB: "${{env.POSTGRES_DB}}"
+        ports:
+          - 5432:5432
+
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
@@ -39,6 +52,31 @@ jobs:
       uses: ruby/setup-ruby@473e4d8fe5dd94ee328fdfca9f8c9c7afc9dae5e
       with:
         ruby-version: ${{ matrix.ruby-version }}
+        working-directory: 'backend-rails'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    
+    - name: rubocop
+      uses: reviewdog/action-rubocop@v1
+      with:
+        workdir: ./backend-rails
+        rubocop_version: gemfile
+        rubocop_extensions: rubocop-rails:gemfile rubocop-rspec:gemfile
+        github_token: ${{ secrets.github_token }}
+        reporter: github-pr-review # Default is github-pr-check
+
+    - name: Setup database
+      working-directory: ./backend-rails
+      env:
+        RAILS_ENV: test
+        POSTGRES_HOST: "${{env.POSTGRES_HOST}}"
+        POSTGRES_USER: "${{env.POSTGRES_USER}}"
+        POSTGRES_PASSWORD: "${{env.POSTGRES_PASSWORD}}"
+        POSTGRES_DB: "${{env.POSTGRES_DB}}"
+      run: |
+        bundle exec rails db:create
+        bundle exec rails db:migrate
+        bundle exec rails db:schema:load
+
     - name: Run tests
-      run: cd backend-rails && bundle exec rspec
+      working-directory: ./backend-rails
+      run: bundle exec rspec
