@@ -60,7 +60,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 # Jobs
 # Sidekiq
-gem 'sidekiq', '~> 5.2', '>= 5.2.7'
+gem 'sidekiq', '~> 5.2'
 gem 'sidekiq-cron'
 
 # Ruby progressbar master race.
