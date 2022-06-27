@@ -27,13 +27,7 @@
 #   'true': 'foo'
 #
 # To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
+# available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  active_admin:
-    dashboard_welcome:
-      welcome: 'Welcome to the BatosJugando tools'
-      call_to_action: 'Use this app to configure and share info for all the apps for Batos Jugando'
-    reddit_token:
-      empty_row_header: 'It is okay if this field is empty!'
-      empty_row_body: 'Just remember to log in into reddit and in this panel'
+  hello: "Hello world"
