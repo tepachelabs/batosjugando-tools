@@ -30,6 +30,10 @@ Layout/LineLength:
     - config/deploy.rb
     - config/initializers/devise.rb
 
+# TODO we need to remove this
+Style/OpenStructUse:
+  Enabled: false
+
 Naming/VariableNumber:
   Enabled: true
   Exclude:
