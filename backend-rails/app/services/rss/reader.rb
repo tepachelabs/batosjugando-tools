@@ -28,6 +28,6 @@ class Rss::Reader
   end
 
   def feed_url
-    ENV['EL_HONGO_VERDE_RSS']
+    ENV.fetch('EL_HONGO_VERDE_RSS', nil)
   end
 end

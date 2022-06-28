@@ -9,7 +9,7 @@ class Twitter::Search
     desc_tweets = []
 
     tweets.reverse_each do |tweet|
-      desc_tweets << OpenStruct.new(tweet_id: tweet.id, text: tweet.text, tweet_url: tweet.url.to_s)
+      desc_tweets << Struct.new(tweet_id: tweet.id, text: tweet.text, tweet_url: tweet.url.to_s)
     end
 
     desc_tweets

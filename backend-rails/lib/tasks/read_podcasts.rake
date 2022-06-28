@@ -1,7 +1,7 @@
 desc 'Read Episodes from Anchor RSS.'
 task read_podcast_episodes: :environment do
   progressbar = ProgressBar.create(title: 'Fetching RSS', total: 1)
-  xml = HTTParty.get(ENV['EL_HONGO_VERDE_RSS']).body
+  xml = HTTParty.get(ENV.fetch('EL_HONGO_VERDE_RSS', nil)).body
   progressbar.increment
 
   progressbar = ProgressBar.create(title: 'Parsing RSS', total: 1)

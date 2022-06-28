@@ -22,7 +22,7 @@ class Twitter::AccessTokenClient
 
     response.parsed_response.split('&').each { |x| the_hash[x] }
 
-    OpenStruct.new(the_hash)
+    Struct.new(the_hash)
   end
 
   private

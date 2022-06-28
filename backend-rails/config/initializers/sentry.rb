@@ -6,7 +6,7 @@ end
 
 if BatosJugando.sentry?
   Sentry.init do |config|
-    config.dsn = ENV['BJ_RAVEN_DNS']
+    config.dsn = ENV.fetch('BJ_RAVEN_DNS', nil)
   end
 
   puts 'Sentry setup complete'

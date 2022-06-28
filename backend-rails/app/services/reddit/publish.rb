@@ -1,5 +1,6 @@
 class Reddit::Publish < Publish::BaseService
   def initialize(oauth_service = nil, api_client = nil)
+    super()
     @oauth_service = oauth_service || Reddit::OAuth.new
     @api_client = api_client || Reddit::ApiClient.new
   end
