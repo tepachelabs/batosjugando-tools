@@ -70,9 +70,7 @@ jobs:
         POSTGRES_PASSWORD: "${{env.POSTGRES_PASSWORD}}"
         POSTGRES_DB: "${{env.POSTGRES_DB}}"
       run: |
-        bundle exec rails db:create
-        bundle exec rails db:migrate
-        bundle exec rails db:schema:load
+        bundle exec rails db:prepare
 
     - name: Run tests
       working-directory: ./backend-rails
