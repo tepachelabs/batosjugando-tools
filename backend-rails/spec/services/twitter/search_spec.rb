@@ -6,9 +6,9 @@ describe Twitter::Search do
       Twitter::Search.new(twitter_client)
     end
 
-    let(:tweet_1) { Struct.new(id: 9_817_238_193_121, text: 'sample text for 1', url: 'https://localhost/1') }
-    let(:tweet_2) { Struct.new(id: 9_817_238_193_122, text: 'sample text for 2', url: 'https://localhost/2') }
-    let(:tweet_3) { Struct.new(id: 9_817_238_193_123, text: 'sample text for 3', url: 'https://localhost/3') }
+    let(:tweet_1) { OpenStruct.new(id: 9_817_238_193_121, text: 'sample text for 1', url: 'https://localhost/1') }
+    let(:tweet_2) { OpenStruct.new(id: 9_817_238_193_122, text: 'sample text for 2', url: 'https://localhost/2') }
+    let(:tweet_3) { OpenStruct.new(id: 9_817_238_193_123, text: 'sample text for 3', url: 'https://localhost/3') }
 
     before do
       allow(twitter_client).to receive(:search)

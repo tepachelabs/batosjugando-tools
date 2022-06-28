@@ -15,6 +15,9 @@ ActiveRecord::Schema.define(version: 2021_01_08_001521) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  # These are custom enum types that must be created before they can be used in the schema definition
+  create_enum "published_job_status", ["published", "unpublished", "in_progress", "failed"]
+
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -107,8 +110,18 @@ ActiveRecord::Schema.define(version: 2021_01_08_001521) do
     t.index ["admin_user_id"], name: "index_publish_configurations_on_admin_user_id"
   end
 
-# Could not dump table "publish_jobs" because of following StandardError
-#   Unknown type 'published_job_status' for column 'status'
+  create_table "publish_jobs", force: :cascade do |t|
+    t.bigint "podcast_episode_id"
+    t.string "platform"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.enum "status", default: "unpublished", as: "published_job_status"
+    t.string "published_url"
+    t.text "message"
+    t.index ["podcast_episode_id", "platform"], name: "index_publish_jobs_on_podcast_episode_id_and_platform", unique: true
+    t.index ["podcast_episode_id"], name: "index_publish_jobs_on_podcast_episode_id"
+    t.index ["status"], name: "index_publish_jobs_on_status"
+  end
 
   add_foreign_key "juegathon_participations", "juegathon_events", column: "juegathon_events_id"
   add_foreign_key "juegathon_participations", "juegathon_participants", column: "juegathon_participants_id"

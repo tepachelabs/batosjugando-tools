@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :rss_response, class: Struct do
+  factory :rss_response, class: OpenStruct do
     title { Faker::Show.play }
     url { Faker::Internet.url }
     summary { Faker::Lorem.paragraph(sentence_count: 10) }

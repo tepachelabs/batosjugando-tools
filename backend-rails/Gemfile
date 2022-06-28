@@ -15,6 +15,7 @@ gem 'pundit'
 gem 'rails', '~> 6.0'
 
 # Postgres
+gem 'activerecord-pg_enum'
 gem 'pg'
 
 # Use Puma as the app server
@@ -73,7 +74,7 @@ gem 'rack-cors'
 
 # Testing and Debugging in general
 group :test, :development do
-  gem 'rspec-rails', '~> 4.0.0'
+  gem 'rspec-rails', '~> 5.0.0'
 end
 
 group :test do
