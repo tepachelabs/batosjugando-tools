@@ -30,7 +30,15 @@ Layout/LineLength:
     - config/deploy.rb
     - config/initializers/devise.rb
 
-Gemspec/DateAssignment: # (new in 1.10)
+# TODO we need to remove this
+Style/OpenStructUse:
+  Enabled: false
+
+Naming/VariableNumber:
+  Enabled: true
+  Exclude:
+    - spec/**/*
+Gemspec/DeprecatedAttributeAssignment: # (new in 1.10)
   Enabled: true
 Layout/SpaceBeforeBrackets: # (new in 1.7)
   Enabled: true

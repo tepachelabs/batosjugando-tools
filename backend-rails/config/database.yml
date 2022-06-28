@@ -1,14 +1,10 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
-#
 default: &default
   adapter: postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5)%>
   timeout: 5000
+  host: localhost
   username: postgres
+  password: postgres
 
 development:
   <<: *default
@@ -19,9 +15,9 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  host: <%= ENV.fetch('POSTGRES_HOST', '') %>
+  host: <%= ENV.fetch('POSTGRES_HOST', 'localhost') %>
   username: <%= ENV.fetch('POSTGRES_USER', 'postgres')%>
-  password: <%= ENV.fetch('POSTGRES_PASSWORD', '')%>
+  password: <%= ENV.fetch('POSTGRES_PASSWORD', 'postgres')%>
   database: <%= ENV.fetch('POSTGRES_DB', 'batosjugando_test') %>
 
 production:

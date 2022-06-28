@@ -1,10 +1,10 @@
 class PublishJob < ApplicationRecord
   enum status: {
-    published: 'published',
-    in_progress: 'in_progress',
-    unpublished: 'unpublished',
-    failed: 'failed'
-  }, _prefix: :status
+         published: 'published',
+         in_progress: 'in_progress',
+         unpublished: 'unpublished',
+         failed: 'failed'
+       }, _prefix: :status
 
   PLATFORMS_TO_PUBLISH = %w[reddit twitter discord slack].freeze
 

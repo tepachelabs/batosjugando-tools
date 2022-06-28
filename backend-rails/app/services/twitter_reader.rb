@@ -22,6 +22,6 @@ class TwitterReader
   end
 
   def discord_webhook
-    ENV['BJ_DISCORD_WEBHOOK']
+    ENV.fetch('BJ_DISCORD_WEBHOOK', nil)
   end
 end
