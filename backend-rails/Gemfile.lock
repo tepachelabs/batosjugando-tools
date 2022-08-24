@@ -441,7 +441,7 @@ DEPENDENCIES
   puma (~> 5.5)
   pundit
   rack-cors
-  rails (~> 6.0)
+  rails (~> 6.1)
   rspec-rails (~> 5.1.2)
   rubocop
   rubocop-faker
