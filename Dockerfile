@@ -31,6 +31,7 @@ RUN apk add --no-cache libxml2 libxslt &&  \
     apk add --no-cache --virtual .gem-installdeps build-base libxml2-dev libxslt-dev ruby-dev
 
 RUN gem install nokogiri --platform=ruby -- --use-system-libraries
+RUN gem install unf_ext --no-ri --no-rdoc
 
 RUN bundle config build.nokogiri --use-system-libraries
 RUN bundle config --global frozen 1
