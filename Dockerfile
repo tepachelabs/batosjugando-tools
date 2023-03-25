@@ -21,6 +21,7 @@ RUN apk add --update --no-cache \
       tzdata
 
 RUN gem install bundler -v 2.3.16
+RUN echo 'gem: --no-document' >> ~/.gemrc
 
 WORKDIR /usr/src/app
 
@@ -32,6 +33,7 @@ RUN apk add --no-cache libxml2 libxslt &&  \
 
 RUN gem install nokogiri --platform=ruby -- --use-system-libraries
 RUN gem install unf_ext --no-document
+RUN gem install sass-rails --no-document
 
 RUN bundle config build.nokogiri --use-system-libraries
 RUN bundle config --global frozen 1
