@@ -1,10 +1,12 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.6'
+ruby '2.7.7'
 
 # ActiveAdmin
-gem 'activeadmin'
+gem 'activeadmin'#, github: 'activeadmin/activeadmin', branch: 'master'
+gem 'sass-rails'
+
 # Plus integrations with:
 gem 'cancancan'
 gem 'devise'

@@ -22,5 +22,7 @@ test:
 
 production:
   <<: *default
-  database: batosjugando
-  username: rails
+  host: <%= ENV.fetch('POSTGRES_HOST', 'localhost') %>
+  username: <%= ENV.fetch('POSTGRES_USER', 'postgres')%>
+  password: <%= ENV.fetch('POSTGRES_PASSWORD', 'postgres')%>
+  database: <%= ENV.fetch('POSTGRES_DB', 'batosjugando_development') %>

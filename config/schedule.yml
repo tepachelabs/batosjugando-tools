@@ -1,7 +1,8 @@
 # config/schedule.yml
-batos_jugando_tweets:
-  cron: "*/15 * * * *" # run each 15 minutes
-  class: "TwitterReaderWorker"
+# TODO Remove Me.
+#batos_jugando_tweets:
+#  cron: "*/15 * * * *" # run each 15 minutes
+#  class: "TwitterReaderWorker"
 el_hongo_verde_publisher:
   cron: "0 17 * * *"
   class: "LastPodcastEpisodePublisherWorker"

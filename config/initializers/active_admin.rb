@@ -4,7 +4,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = 'Batos Jugando Tools'
+  config.site_title = "Backend Rails"
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -17,6 +17,23 @@ ActiveAdmin.setup do |config|
   # Note: Aim for an image that's 21px high so it fits in the header.
   #
   # config.site_title_image = "logo.png"
+
+  # == Load Paths
+  #
+  # By default Active Admin files go inside app/admin/.
+  # You can change this directory.
+  #
+  # eg:
+  #   config.load_paths = [File.join(Rails.root, 'app', 'ui')]
+  #
+  # Or, you can also load more directories.
+  # Useful when setting namespaces with users that are not your main AdminUser entity.
+  #
+  # eg:
+  #   config.load_paths = [
+  #     File.join(Rails.root, 'app', 'admin'),
+  #     File.join(Rails.root, 'app', 'cashier')
+  #   ]
 
   # == Default Namespace
   #
@@ -124,7 +141,7 @@ ActiveAdmin.setup do |config|
   # This allows your users to comment on any resource registered with Active Admin.
   #
   # You can completely disable comments:
-  config.comments = false
+  # config.comments = false
   #
   # You can change the name under which comments are registered:
   # config.comments_registration_name = 'AdminComment'
@@ -157,7 +174,7 @@ ActiveAdmin.setup do |config|
   # You can exclude possibly sensitive model attributes from being displayed,
   # added to forms, or exported by default by ActiveAdmin
   #
-  config.filter_attributes = %i[encrypted_password password password_confirmation]
+  config.filter_attributes = [:encrypted_password, :password, :password_confirmation]
 
   # == Localize Date/Time Format
   #
@@ -294,7 +311,7 @@ ActiveAdmin.setup do |config|
   # config.include_default_association_filters = true
 
   # config.maximum_association_filter_arity = 256 # default value of :unlimited will change to 256 in a future version
-  # config.filter_columns_for_large_association, [
+  # config.filter_columns_for_large_association = [
   #    :display_name,
   #    :full_name,
   #    :name,
@@ -303,7 +320,7 @@ ActiveAdmin.setup do |config|
   #    :title,
   #    :email,
   #  ]
-  # config.filter_method_for_large_association, '_starts_with'
+  # config.filter_method_for_large_association = '_starts_with'
 
   # == Head
   #

@@ -1,4 +1,4 @@
-FROM ruby:2.7.6-alpine3.14
+FROM ruby:2.7.7-alpine
 
 ENV BUNDLER_VERSION=2.3.16
 ENV BUNDLE_WITHOUT development:test
