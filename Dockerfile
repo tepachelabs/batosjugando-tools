@@ -18,7 +18,9 @@ RUN apk add --update --no-cache \
       nodejs \
       postgresql-dev \
       gcompat \
-      tzdata
+      tzdata \
+      libxml2-dev \
+      libxslt1-dev
 
 RUN gem install bundler -v 2.3.16
 
