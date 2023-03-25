@@ -18,8 +18,15 @@ RUN apk add --update --no-cache \
       nodejs \
       postgresql-dev \
       gcompat \
-      tzdata \
-      build-base
+      tzdata
+
+# Stupid nokogiri.
+RUN apk add --no-cache libxml2 libxslt && \
+        apk add --no-cache --virtual .gem-installdeps build-base libxml2-dev libxslt-dev && \
+        gem install nokogiri --platform=ruby -- --use-system-libraries && \
+        rm -rf $GEM_HOME/cache && \
+        apk del .gem-installdeps
+
 
 RUN gem install bundler -v 2.3.16
 
