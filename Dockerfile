@@ -34,7 +34,7 @@ WORKDIR /usr/src/app
 
 COPY Gemfile Gemfile.lock ./
 
-RUN bundle config build.nokogiri --use-system-libraries
+#RUN bundle config build.nokogiri --use-system-libraries
 RUN bundle config --global frozen 1
 RUN bundle install
 
