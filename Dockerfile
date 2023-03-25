@@ -28,7 +28,7 @@ COPY Gemfile Gemfile.lock ./
 
 # Stupid nokogiri.
 RUN apk add --no-cache libxml2 libxslt &&  \
-    apk add --no-cache --virtual .gem-installdeps build-base libxml2-dev libxslt-dev
+    apk add --no-cache --virtual .gem-installdeps build-base libxml2-dev libxslt-dev ruby-dev
 
 RUN gem install nokogiri --platform=ruby -- --use-system-libraries
 
