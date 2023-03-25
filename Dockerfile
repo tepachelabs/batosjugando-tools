@@ -59,4 +59,4 @@ COPY . ./
 
 EXPOSE 3000
 
-ENTRYPOINT ["./entrypoints/docker-entrypoint.sh"]
+CMD ["sh", "./entrypoints/docker-entrypoint.sh"]
