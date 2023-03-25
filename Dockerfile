@@ -20,13 +20,6 @@ RUN apk add --update --no-cache \
       gcompat \
       tzdata
 
-# Stupid nokogiri.
-RUN apk add --no-cache libxml2 libxslt && \
-        apk add --no-cache --virtual .gem-installdeps build-base libxml2-dev libxslt-dev && \
-        gem install nokogiri --platform=ruby -- --use-system-libraries && \
-        rm -rf $GEM_HOME/cache && \
-        apk del .gem-installdeps
-
 
 RUN gem install bundler -v 2.3.16
 
@@ -34,9 +27,17 @@ WORKDIR /usr/src/app
 
 COPY Gemfile Gemfile.lock ./
 
-#RUN bundle config build.nokogiri --use-system-libraries
+# Stupid nokogiri.
+RUN apk add --no-cache libxml2 libxslt && \
+        apk add --no-cache --virtual .gem-installdeps build-base libxml2-dev libxslt-dev && \
+
+RUN bundle config build.nokogiri --use-system-libraries
 RUN bundle config --global frozen 1
 RUN bundle install
+
+RUN gem install nokogiri --platform=ruby -- --use-system-libraries && \
+        rm -rf $GEM_HOME/cache && \
+        apk del .gem-installdeps
 
 COPY . ./
 
