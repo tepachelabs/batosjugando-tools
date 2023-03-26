@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 module BackendRails
   class Application < Rails::Application
+
+    puts("TEST:", ENV.fetch("REDIS_HOST", 'redis://localhost:6379'))
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
