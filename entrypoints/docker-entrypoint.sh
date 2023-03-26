@@ -9,5 +9,5 @@ fi
 # prepare rails db
 bundle exec rails db:prepare
 
-bundle exec sidekiq -d # run as a daemon and that's it.
+bundle exec sidekiq -d --environment production # run as a daemon and that's it.
 bundle exec rails s -b 0.0.0.0
