@@ -453,6 +453,7 @@ DEPENDENCIES
   pundit
   rack-cors
   rails (~> 6.1)
+  redis
   rspec-rails (~> 5.1.2)
   rubocop
   rubocop-faker

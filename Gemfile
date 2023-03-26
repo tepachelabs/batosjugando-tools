@@ -51,6 +51,7 @@ gem 'bootsnap'
 
 # Jobs
 # Sidekiq
+gem 'redis'
 gem 'sidekiq'
 gem 'sidekiq-cron'
 

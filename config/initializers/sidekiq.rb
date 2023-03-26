@@ -1,3 +1,4 @@
+puts("Hello from sidekiq")
 Sidekiq.configure_server do |config|
   config.redis = {
     url: ENV.fetch("REDIS_HOST", 'redis://localhost:6379'),
