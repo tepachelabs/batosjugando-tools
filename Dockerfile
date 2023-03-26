@@ -9,20 +9,6 @@ ENV RAILS_ENV production
 # make 'docker logs' work
 ENV RAILS_LOG_TO_STDOUT=true
 
-ARG REDIS_HOST
-ARG REDIS_PASSWORD
-ARG POSTGRES_HOST
-ARG POSTGRES_USER
-ARG POSTGRES_PASSWORD
-ARG POSTGRES_DB
-
-ENV REDIS_HOST=${REDIS_HOST}
-ENV REDIS_PASSWORD=${REDIS_PASSWORD}
-ENV POSTGRES_HOST=${POSTGRES_HOST}
-ENV POSTGRES_USER=${POSTGRES_USER}
-ENV POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-ENV POSTGRES_DB=${POSTGRES_DB}
-
 RUN apk add --update --no-cache \
       curl \
       musl \
@@ -52,8 +38,6 @@ RUN gem install sass-rails --no-document
 RUN bundle config build.nokogiri --use-system-libraries
 RUN bundle config --global frozen 1
 RUN bundle install
-
-RUN rm -rf $GEM_HOME/cache && apk del .gem-installdeps
 
 COPY . ./
 
