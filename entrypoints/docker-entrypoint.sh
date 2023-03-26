@@ -2,6 +2,8 @@
 
 set -e
 
+export RAILS_ENV=production
+
 if [ -f tmp/pids/server.pid ]; then
   rm tmp/pids/server.pid
 fi
