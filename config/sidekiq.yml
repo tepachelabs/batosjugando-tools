@@ -1,7 +1,7 @@
 ---
 :concurrency: 5
-:url: 'redis://localhost:6379'
-:password: 'password'
+:url: <%= ENV.fetch("REDIS_HOST", 'redis://localhost:6379')%>
+:password: <%= ENV.fetch("REDIS_PASSWORD", 'password')%>
 staging:
   :concurrency: 5
 :queues:
@@ -11,5 +11,3 @@ staging:
 
 production:
   :concurrency: 5
-  :url: <%= ENV.fetch("REDIS_HOST", 'redis://localhost:6379')%>
-  :password: <%= ENV.fetch("REDIS_PASSWORD", 'password')%>
