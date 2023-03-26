@@ -1,6 +1,7 @@
 name: Build and Deploy
 
 env:
+  CONTEXT_DIR: './'
   IMAGE_NAME: ${{ github.repository }}
   DOCKERFILE: Dockerfile
   CAPROVER_APP: bjtools
@@ -13,7 +14,7 @@ on:
       - js/upgrade-rails
 
 jobs:
-  publish-app:
+  build-and-publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -31,9 +32,9 @@ jobs:
         shell: bash
         run: ./build_and_push.sh
       - name: Deploy to CapRover
-        uses: floms/action-caprover@bc835272f3c1ec1a470d80d44fc2a4518eb85d9d
+        uses: caprover/deploy-from-github@d76580d79952f6841c453bb3ed37ef452b19752c
         with:
-          host: ${{ env.CAPROVER_HOST }}
+          server: ${{ secrets.CAPROVER_HOST }}
           app: ${{ env.CAPROVER_APP }}
-          password: "${{ secrets.CAPROVER_TOKEN }}"
-          image: "${{ env.FULL_IMAGE_NAME }}"
+          token: '${{ secrets.CAPROVER_APP_TOKEN }}'
+          image: '${{ env.FULL_IMAGE_NAME }}'
