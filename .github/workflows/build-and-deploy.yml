@@ -36,5 +36,5 @@ jobs:
         with:
           server: ${{ env.CAPROVER_HOST }}
           app: ${{ env.CAPROVER_APP }}
-          token: '${{ secrets.CAPROVER_TOKEN }}'
-          image: '${{ env.FULL_IMAGE_NAME }}'
+          token: ${{ secrets.CAPROVER_TOKEN }}
+          image: ${{ env.FULL_IMAGE_NAME }}
